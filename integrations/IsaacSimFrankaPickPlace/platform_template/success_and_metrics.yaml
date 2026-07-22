@@ -1,0 +1,35 @@
+success_conditions:
+  controller_done:
+    description: Isaac Sim 官方 FrankaPickPlace controller 返回 is_done() 为 true。
+    required: true
+  object_at_target:
+    description: cube 最终位置接近 target_position。
+    threshold_m: 0.05
+    required: true
+  released:
+    description: 放置阶段夹爪打开，物体释放。
+    required: true
+  no_timeout:
+    description: 在最大步数内完成。
+    max_steps: 600
+    required: true
+metrics:
+  success_rate:
+    type: ratio
+    description: 成功 episode 数 / 总 episode 数。
+  completion_step:
+    type: integer
+    description: controller 完成时的仿真步数。
+  final_position_error:
+    type: float
+    unit: m
+    description: cube 末位置与目标位置距离。
+  grasp_success:
+    type: boolean
+    description: 抓取阶段后 cube 是否被抬起。
+  place_success:
+    type: boolean
+    description: cube 是否被放到目标区域。
+  timeout_count:
+    type: integer
+    description: 超时 episode 数。

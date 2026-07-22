@@ -1,0 +1,89 @@
+# PostgreSQL + MinIO 独立编排（与主栈 docker-compose.yml 分离）
+#
+# 在项目根目录、已配置 .env 时启动：
+#   docker compose -f docker-compose.postgres-minio.yml up -d --build
+#
+# 首次初始化 Postgres 需要仓库根目录存在 eai_ide_backup.sql（与 compose 同目录绑定进容器）。
+# 若 clone 后没有该文件，请从备份/制品拷贝后再 up；仅删卷后首次启动会执行 initdb.d 脚本。
+# 应用启动时仍会创建超管 Pibot0001（与是否导入 dump 无关）；团队/项目等种子数据来自该 SQL。
+# 停止：
+#   docker compose -f docker-compose.postgres-minio.yml down
+#
+# 与主 compose 同为 network_mode: host，端口与 .env 中 DATABASE_URL、MINIO_* 一致。
+# Compose 项目名默认为目录名；若需固定卷名前缀可加上 -p eai-ide-infra
+#
+name: eai-ide-infra
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+      pull: false
+      args:
+        POSTGRES_BASE_IMAGE: ${POSTGRES_BASE_IMAGE:-postgres:16}
+    image: eai-postgres:local
+    container_name: eai-postgres
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin123}
+      POSTGRES_DB: ${POSTGRES_DB:-eai_ide}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # 仅空数据卷时执行；文件名 00- 保证先于其它 init 脚本
+      - ./eai_ide_backup.sql:/docker-entrypoint-initdb.d/00-eai-ide-seed.sql:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -h 127.0.0.1 -p ${POSTGRES_PORT:-5432} -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2G
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+
+  minio:
+    build:
+      context: .
+      dockerfile: Dockerfile.minio
+      pull: false
+      args:
+        MINIO_BASE_IMAGE: ${MINIO_BASE_IMAGE:-minio/minio:latest}
+    image: eai-minio:local
+    container_name: eai-minio
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-Admin@123}
+      MINIO_PORT: ${MINIO_API_PORT:-9000}
+      CONSOLE_PORT: ${MINIO_CONSOLE_PORT:-9001}
+    volumes:
+      - minio-data:/data
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2G
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+
+volumes:
+  postgres-data:
+  minio-data:

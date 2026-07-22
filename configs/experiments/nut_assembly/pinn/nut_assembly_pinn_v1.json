@@ -1,0 +1,17 @@
+{
+  "modelId": "nut_assembly_pinn_v1",
+  "displayName": "NutAssembly-PINN v1",
+  "pipelineVersion": "v1_heuristic",
+  "modelPaths": [
+    "assets/models/pinn/nut_assembly_pinn_v1/model.pt"
+  ],
+  "repairStages": ["align_over_peg", "descend_insert"],
+  "constraintsEnabled": [
+    "L_align",
+    "L_insert_axis",
+    "L_pose_tilt",
+    "L_smoothness",
+    "L_workspace",
+    "L_contact_consistency"
+  ]
+}

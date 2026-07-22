@@ -1,0 +1,11 @@
+# 使用指定的镜像版本
+FROM redis:7-alpine
+
+# 如果需要自定义配置，可以将本地的 redis.conf 拷贝进去
+# COPY redis.conf /usr/local/etc/redis/redis.conf
+
+# 暴露端口（对应 -p 6379:6379 的容器内部部分）
+EXPOSE 6379
+
+# 运行 Redis 服务器
+CMD ["redis-server"]

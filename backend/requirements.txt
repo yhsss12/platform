@@ -1,0 +1,74 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-jose==3.3.0
+passlib[bcrypt]==1.7.4
+six>=1.16.0
+pyasn1>=0.4.0
+sqlalchemy==2.0.32
+pydantic==2.8.2
+pydantic-settings==2.4.0
+python-multipart==0.0.9
+numpy==1.26.4
+rerun-sdk==0.15.1
+opencv-python-headless<4.10.0.84
+h5py>=3.10.0
+mcap>=1.0.0
+mcap-ros2-support>=0.0.10
+# 已完全迁移至 PostgreSQL，不再使用 aiosqlite
+aiohttp>=3.9.0
+alembic>=1.13.0
+python-dotenv>=1.0.0
+psycopg2-binary>=2.9.0
+asyncpg>=0.29.0
+pandas>=2.0.0
+bcrypt>=4.0.1
+certifi==2025.10.5
+# HTTP 客户端和依赖
+aiohttp>=3.9.0
+yarl>=1.9.0
+attrs>=21.3.0
+multidict>=6.0
+frozenlist>=1.4.0
+aiosignal>=1.3.0
+idna>=3.0
+urllib3==2.5.0
+# 自动标注（label_task_description.py / batch_annotation_service / annotation_service / mcap_service）
+# - requests: label_task_description 调用 OpenAI 兼容 /v1/chat/completions
+# - h5py, numpy, opencv-python-headless: HDF5 读帧与图像编码
+# - mcap, mcap-ros2-support: MCAP 读帧与 ROS2 解码
+# - python-dotenv: 加载 .env 中的 OPENAI_BASE_URL / OPENAI_API_KEY / OPENAI_MODEL
+requests>=2.28.0
+bcrypt>=4.0.0
+# Added from relman project for mcap conversion
+pyyaml>=6.0
+tqdm>=4.62.3
+psutil>=5.8.0
+openpyxl>=3.1.0
+# 评测报告导出（PDF / Word）；缺失时对应格式会返回 503 而非崩溃
+reportlab>=4.0.0
+python-docx>=1.1.0
+
+pyserial==3.5
+pymodbus==3.12.1
+minio>=7.2.7
+pypinyin>=0.53.0
+httpx>=0.27.0
+asyncpg==0.31.0
+
+redis>=5.0.0
+rq>=1.16.0
+
+psycopg2-binary==2.9.11
+aiortc>=1.9.0
+
+# Agent 安装包签名校验（Ed25519）
+cryptography>=42.0.0
+
+# 训练节点 SSH 远程 runner
+paramiko>=3.4.0
+
+# 可选：MCAP → LeRobot（scripts/relman/mcap_to_lerobot.py）
+# 勿直接 pip install lerobot：在 Linux 无 linux-headers 时 pynput 会拉取需编译的 evdev 包（与已装的 evdev-binary 不同名）。
+# 在已激活的 venv/conda 下执行：
+#   cd backend && ./tools/setup/install_lerobot.sh
+# 或：python tools/setup/install_lerobot.py

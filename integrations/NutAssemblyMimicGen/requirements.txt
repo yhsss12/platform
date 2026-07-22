@@ -1,0 +1,16 @@
+# NutAssembly MimicGen worker (P5/P6) — pin versions for MimicGen + upstream robosuite compatibility
+mujoco>=2.3.0,<3.0
+gdown
+h5py
+numpy
+imageio
+imageio-ffmpeg
+robosuite==1.4.1
+robomimic @ git+https://github.com/ARISE-Initiative/robomimic.git@v0.4.0
+tqdm
+termcolor
+torch
+
+# After pip install, run in nut-assembly-mvp:
+#   python $CONDA_PREFIX/lib/python3.10/site-packages/robosuite/scripts/setup_macros.py
+#   python $CONDA_PREFIX/lib/python3.10/site-packages/robomimic/scripts/setup_macros.py

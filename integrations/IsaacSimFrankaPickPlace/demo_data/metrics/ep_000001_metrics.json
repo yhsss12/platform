@@ -1,0 +1,11 @@
+{
+  "episode_id": "ep_000001",
+  "task_id": "isaacsim_franka_pick_place",
+  "expert_source": "NVIDIA Isaac Sim FrankaPickPlace official controller",
+  "success": null,
+  "completion_step": null,
+  "final_position_error": null,
+  "grasp_success": null,
+  "place_success": null,
+  "data_status": "awaiting_local_isaacsim_run"
+}

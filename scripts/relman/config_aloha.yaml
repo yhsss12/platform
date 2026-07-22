@@ -1,0 +1,136 @@
+# ROS2 mcap 到 HDF5 转换器配置文件
+# 适配 relman/11 文件夹数据（episode_11.mcap）
+# 话题: /left/joint_states, /right/joint_states, /camera*/camera*/color|depth/image_*, 夹爪 Float32
+
+topics:
+  # 左臂关节状态
+  - topic_name: "/left/joint_states"
+    message_type: "sensor_msgs/msg/JointState"
+    hdf5_path: "/observations/arm_joint_left_state"
+    data_type: "float32"
+    description: "左臂关节状态"
+    custom_processor: "joint_state"
+    custom_params:
+      joint_count: -1
+
+  # 右臂关节状态
+  - topic_name: "/right/joint_states"
+    message_type: "sensor_msgs/msg/JointState"
+    hdf5_path: "/observations/arm_joint_right_state"
+    data_type: "float32"
+    description: "右臂关节状态"
+    custom_processor: "joint_state"
+    custom_params:
+      joint_count: -1
+
+  # 相机1 彩色
+  - topic_name: "/camera1/camera1/color/image_raw/compressed"
+    message_type: "compressed_image"
+    hdf5_path: "/images/camera1/color/origin"
+    data_type: "uint8"
+    description: "相机1 彩色"
+    custom_processor: "compressed_image"
+    custom_params: {}
+
+  # 相机1 深度
+  - topic_name: "/camera1/camera1/depth/image_rect_raw"
+    message_type: "sensor_msgs/msg/Image"
+    hdf5_path: "/images/camera1/depth/origin"
+    data_type: "uint16"
+    custom_processor: "image"
+    custom_params: {}
+
+  # 相机2 彩色
+  - topic_name: "/camera2/camera2/color/image_raw/compressed"
+    message_type: "compressed_image"
+    hdf5_path: "/images/camera2/color/origin"
+    data_type: "uint8"
+    description: "相机2 彩色"
+    custom_processor: "compressed_image"
+    custom_params: {}
+
+  # 相机2 深度
+  - topic_name: "/camera2/camera2/depth/image_rect_raw"
+    message_type: "sensor_msgs/msg/Image"
+    hdf5_path: "/images/camera2/depth/origin"
+    data_type: "uint16"
+    custom_processor: "image"
+    custom_params: {}
+
+  # 相机3 彩色
+  - topic_name: "/camera3/camera3/color/image_raw/compressed"
+    message_type: "compressed_image"
+    hdf5_path: "/images/camera3/color/origin"
+    data_type: "uint8"
+    description: "相机3 彩色"
+    custom_processor: "compressed_image"
+    custom_params: {}
+
+  # 相机3 深度
+  - topic_name: "/camera3/camera3/depth/image_rect_raw"
+    message_type: "sensor_msgs/msg/Image"
+    hdf5_path: "/images/camera3/depth/origin"
+    data_type: "uint16"
+    custom_processor: "image"
+    custom_params: {}
+
+  # 夹爪（11 数据使用 std_msgs/Float32）
+  - topic_name: "/left_gripper_state"
+    message_type: "std_msgs/msg/Float32"
+    hdf5_path: "/observations/gripper_left_state/data"
+    data_type: "float32"
+    custom_processor: "float32"
+    custom_params: {}
+
+  - topic_name: "/right_gripper_state"
+    message_type: "std_msgs/msg/Float32"
+    hdf5_path: "/observations/gripper_right_state/data"
+    data_type: "float32"
+    custom_processor: "float32"
+    custom_params: {}
+
+  - topic_name: "/left_gripper_cmd"
+    message_type: "std_msgs/msg/Float32"
+    hdf5_path: "/actions/gripper_left_state/data"
+    data_type: "float32"
+    custom_processor: "float32"
+    custom_params: {}
+
+  - topic_name: "/right_gripper_cmd"
+    message_type: "std_msgs/msg/Float32"
+    hdf5_path: "/actions/gripper_right_state/data"
+    data_type: "float32"
+    custom_processor: "float32"
+    custom_params: {}
+
+  # 末端六维力（Sixforce）
+  - topic_name: "/left/rm_driver/get_force_data_result"
+    message_type: "rm_ros_interfaces/msg/Sixforce"
+    hdf5_path: "/observations/force_left_state"
+    data_type: "float64"
+    description: "末端六维力（左）"
+    custom_processor: "sixforce"
+    custom_params: {}
+
+  - topic_name: "/right/rm_driver/get_force_data_result"
+    message_type: "rm_ros_interfaces/msg/Sixforce"
+    hdf5_path: "/observations/force_right_state"
+    data_type: "float64"
+    description: "末端六维力（右）"
+    custom_processor: "sixforce"
+    custom_params: {}
+
+alignment:
+  strategy: "backfill_on_grid"
+  grid_fps: 20.0
+  alignment_window: 0.05
+  target_fps: 30.0
+  sample_drop: 0
+  relative_start: false
+  delta_action: false
+  expand_start: false
+  main_timeline_topic: null
+  target_duration: null
+  max_duration: 60.0
+  min_duration: 5.0
+  duration_mode: "original"

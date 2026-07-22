@@ -1,0 +1,102 @@
+{
+  "convert-detail-drawer": {
+    "zh-CN": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "en": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "sv": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    }
+  },
+  "collect-create-preview": {
+    "zh-CN": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "en": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "sv": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    }
+  },
+  "admin-users-role": {
+    "zh-CN": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "en": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "sv": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    }
+  },
+  "collect-jobs-page": {
+    "zh-CN": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "en": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    },
+    "sv": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "OK"
+    }
+  },
+  "refresh-persist": {
+    "zh-CN": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "epi_locale=zh-CN"
+    },
+    "en": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "epi_locale=en"
+    },
+    "sv": {
+      "pass": true,
+      "refresh": true,
+      "keys": false,
+      "note": "epi_locale=sv"
+    }
+  }
+}

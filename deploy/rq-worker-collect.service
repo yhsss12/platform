@@ -1,0 +1,21 @@
+[Unit]
+Description=EAI RQ Worker (collect_queue)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/project/eai-ide/backend
+Environment=PYTHONUNBUFFERED=1
+Environment=REDIS_HOST=127.0.0.1
+Environment=REDIS_PORT=6379
+ExecStart=/home/ubuntu/miniconda3/envs/eai-ide/bin/python worker/start_worker.py --queues collect_queue
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+

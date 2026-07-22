@@ -1,0 +1,53 @@
+<mujoco model="flex_improve">
+  <!--
+    flex_improve: 优化版 flex 线缆，提高物理抓取成功率。
+
+    相比 flex_cable 的改进：
+    1. radius 0.004 → 0.005：碰撞体半径增加 25%，增加夹爪-线缆接触面积
+    2. bend 1.2e3 → 8e2：降低弯曲刚度，线缆更容易被夹爪包裹
+    3. twist 3e2 → 2e2：降低扭转刚度
+    4. 保持 51 个顶点、0.5m 总长
+  -->
+
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable"/>
+  </extension>
+
+  <option timestep="0.005" solver="Newton" tolerance="1e-6"/>
+
+  <default>
+    <geom condim="6" friction="3.0 0.04 0.001" solref="0.006 1"
+          solimp="0.96 0.992 0.0005" margin="0.002"/>
+  </default>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <flexcomp
+          name="flex_improve"
+          type="grid"
+          count="51 1 1"
+          spacing="0.01 0.01 0.01"
+          radius="0.005"
+          dim="1"
+          rgba="0.2 0.8 0.2 1"
+        >
+          <edge equality="true" stiffness="0" damping="0.03"
+                 solref="0.006 1" solimp="0.97 0.995 0.0005"/>
+
+          <elasticity young="3.5e4" poisson="0.3" damping="0.05"
+                      thickness="0.001"/>
+
+          <plugin plugin="mujoco.elasticity.cable">
+            <config key="twist" value="2e2"/>
+            <config key="bend" value="1e3"/>
+            <config key="vmax" value="0"/>
+          </plugin>
+        </flexcomp>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.008" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.008" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.15 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

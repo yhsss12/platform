@@ -1,0 +1,6 @@
+<mujoco model="cable_rmb_config">
+  <asset>
+    <material name="cable_mat" rgba="0.92 0.92 0.92 1" specular="0.2" shininess="0.3"/>
+    <material name="cable_box_mat" rgba="1 1 0.2 1" specular="0.2" shininess="0.3"/>
+  </asset>
+</mujoco>

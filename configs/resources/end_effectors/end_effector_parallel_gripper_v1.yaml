@@ -1,0 +1,15 @@
+asset_id: end_effector_parallel_gripper_v1
+asset_type: end_effector
+name: 平行夹爪
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: 双臂任务中的基础夹持末端
+tags:
+  - gripper
+  - industrial
+files:
+  mjcf: integrations/DualArmCableManipulation/assets/end_effectors/parallel_gripper/gripper.xml
+metadata:
+  dof: 1
+  grasp_type: parallel

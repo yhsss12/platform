@@ -1,0 +1,27 @@
+asset_id: scene_dual_arm_cable_mujoco_v1
+asset_type: scene
+name: 双臂线缆 MuJoCo 场景
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: DualArmCableManipulation 默认双臂桌面场景
+tags:
+  - dual_arm_cable_manipulation
+  - mujoco
+files:
+  scene_file: integrations/DualArmCableManipulation/assets/scenes/dual_fr3_table_scene.xml
+  preview_image: ""
+metadata:
+  required_assets:
+    - robot_dual_arm_rm75_v1
+    - end_effector_parallel_gripper_v1
+    - object_cable_v1
+  camera_config:
+    perception_camera: cam_overhead
+    display_camera: cam_workspace
+    width: 1280
+    height: 960
+  physics_params:
+    timestep: 0.002
+    gravity: [0, 0, -9.81]
+  default_seed: 42

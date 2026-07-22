@@ -1,0 +1,21 @@
+[Unit]
+# Legacy unit retained for deployment-history reference. Paths below are stale.
+Description=EAI iDev 2.0 App Service (pnpm)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+
+WorkingDirectory=/home/ubuntu/project/eai-ide
+
+ExecStart=/bin/bash -lc 'cd /home/ubuntu/project/eai-ide && /home/ubuntu/.nvm/versions/node/v20.20.0/bin/pnpm run dev'
+
+Restart=always
+RestartSec=5
+
+Environment=NODE_ENV=development
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+asset_id: scene_cable_threading_mujoco_v1
+asset_type: scene
+name: 线缆穿杆 MuJoCo 场景
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: CableThreading MVP 默认 MuJoCo 仿真场景
+tags:
+  - cable_threading
+  - mujoco
+files:
+  scene_file: integrations/CableThreadingMVP/assets/scenes/cable_threading_scene.xml
+  preview_image: ""
+metadata:
+  required_assets:
+    - robot_dual_arm_rm75_v1
+    - object_cable_v1
+    - object_threading_fixture_v1
+  camera_config:
+    name: agentview
+    width: 640
+    height: 480
+  physics_params:
+    timestep: 0.002
+    gravity: [0, 0, -9.81]
+  default_seed: 42

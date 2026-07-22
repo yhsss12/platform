@@ -1,0 +1,58 @@
+<mujoco model="flex_reference_composite_cable_soft">
+  <!--
+    柔软版 composite 线缆：尽可能接近 flex 线缆的柔软度。
+
+    相比标准 composite 的改进：
+    1. bend=1e3, twist=1e2：弯曲刚度降低 1.2x，扭转刚度降低 3x
+    2. joint damping=0.01：关节阻尼降低 2x（从 0.02）
+    3. armature=0.0001：旋转惯量降低 5x（从 0.0005）
+    4. density=800：密度降低 20%（从 1000）
+    5. solref=0.006 1, solimp=0.96 0.992：匹配 flex 的接触参数
+    6. condim=6：启用扭转摩擦（匹配 flex）
+    7. 60 段（从 50）：更细的分段让弯曲更平滑
+
+    结构限制：composite 是刚体链，无法像 flex 一样轴向拉伸。
+    但对于只需弯曲（不需拉伸）的任务，此参数集已接近 flex 的行为。
+  -->
+
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable"/>
+  </extension>
+
+  <default>
+    <geom condim="6" friction="2.8 0.03 0.001" solref="0.006 1" solimp="0.96 0.992 0.0005" margin="0.001"/>
+  </default>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <composite
+          prefix="flexrefc_"
+          type="cable"
+          curve="s"
+          count="60 1 1"
+          size="0.5"
+          offset="-0.25 0 0"
+          initial="none"
+        >
+          <plugin plugin="mujoco.elasticity.cable">
+            <config key="twist" value="1e2"/>
+            <config key="bend" value="1e3"/>
+            <config key="vmax" value="0"/>
+          </plugin>
+          <joint kind="main" damping="0.01" armature="0.0001"/>
+          <geom
+            type="capsule"
+            size="0.004"
+            group="0"
+            rgba="0.2 0.7 0.2 1"
+            density="800"
+          />
+        </composite>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.004" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.004" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.25 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

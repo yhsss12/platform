@@ -1,0 +1,34 @@
+task_id: isaacsim_franka_pick_place
+task_name: Franka 物体搬运
+simulator: Isaac Sim
+simulator_family: NVIDIA Isaac
+backend_type: official_isaacsim_example
+robot: Franka Panda
+task_type: pick_and_place
+scene_source: NVIDIA Isaac Sim Robotics Examples
+expert_source: NVIDIA Isaac Sim FrankaPickPlace official controller
+expert_policy:
+  type: official_scripted_state_machine
+  import_path: isaacsim.robot.experimental.manipulators.examples.franka.FrankaPickPlace
+  adapter: expert/official_franka_pick_place_adapter.py
+  ai_generated: false
+  platform_authored: false
+success_condition:
+  - controller_is_done == true
+  - object_released_near_target == true
+  - final_position_error <= 0.05
+metrics:
+  - success_rate
+  - completion_step
+  - final_position_error
+  - grasp_success
+  - place_success
+  - timeout_count
+  - episode_duration_sec
+runtime_requirements:
+  isaac_sim: ">=6.0 recommended"
+  python_entry: ./python.sh
+  official_standalone_example: standalone_examples/api/isaacsim.robot.experimental.manipulators/franka/pick_place.py
+status_policy:
+  when_isaacsim_available: 官方专家策略可用
+  when_isaacsim_missing: 需要 Isaac Sim 运行环境

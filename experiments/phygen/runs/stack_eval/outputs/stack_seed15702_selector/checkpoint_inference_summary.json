@@ -1,0 +1,12 @@
+{
+  "mode": "checkpoint_inference",
+  "checkpoint": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/checkpoints/stack_failed_conditioned_pinn.pt",
+  "runtime_device": "cuda",
+  "target_failed_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15702_demo100/demo_src_stack_task_D0/demo_failed.hdf5",
+  "target_success_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15702_demo100/demo_src_stack_task_D0/demo.hdf5",
+  "candidate_plan": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/outputs/stack_seed15702_selector/pinn_utility_boundary_union_candidate_plan.jsonl",
+  "target_demo_count": 8,
+  "pool_size": 128,
+  "budget": 5,
+  "candidate_mode": "safe"
+}

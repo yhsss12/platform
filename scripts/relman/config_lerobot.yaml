@@ -1,0 +1,53 @@
+# MCAP -> LeRobot 转换配置
+# 适配 relman/11 文件夹数据，输出格式与 lerobot_output 一致
+
+lerobot:
+  repo_id: "my_org/my_lerobot_dataset"
+  robot_type: "aloha"
+  fps: 20.0
+
+  # 输出格式：与 lerobot_output 一致（cam_extra_1/2/3 命名、mp4）
+  use_videos: true
+  mode: "video"
+
+  image_writer_processes: 1
+  image_writer_threads: 1
+
+  vcodec: "h264"
+  encoder_threads: 1
+  batch_encoding_size: 1
+  streaming_encoding: false
+  encoder_queue_maxsize: 10
+
+  # state: 左臂 + 右臂 + 左夹爪 + 右夹爪
+  state_sources:
+    - topic: "/left/joint_states"
+      field: "data"
+    - topic: "/right/joint_states"
+      field: "data"
+    - topic: "/left_gripper_state"
+      field: "data"
+    - topic: "/right_gripper_state"
+      field: "data"
+    # 末端六维力（Sixforce）：将自动写入 observation.force.left/right，
+    # 不参与 observation.state/action 的 joint_dim 拼接
+    - topic: "/left/rm_driver/get_force_data_result"
+      field: "data"
+    - topic: "/right/rm_driver/get_force_data_result"
+      field: "data"
+
+  action_mode: "next_state"
+
+  # 相机命名与 lerobot_output 一致: cam_extra_1, cam_extra_2, cam_extra_3
+  camera_mapping:
+    cam_extra_1: "/camera1/camera1/color/image_raw/compressed"
+    cam_extra_2: "/camera2/camera2/color/image_raw/compressed"
+    cam_extra_3: "/camera3/camera3/color/image_raw/compressed"
+
+  has_velocity: false
+  has_effort: false
+
+  default_instruction: "pick and place the object"
+
+  # 11 文件夹使用 instruction.json（非 instructions.json）
+  instructions_path: "instruction.json"

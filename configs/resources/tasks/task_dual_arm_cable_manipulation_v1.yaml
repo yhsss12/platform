@@ -1,0 +1,68 @@
+asset_id: task_dual_arm_cable_manipulation_v1
+asset_type: task
+task_type: dual_arm_cable_manipulation
+name: 线缆整理
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: 双臂协同线缆感知、抓取、拉伸与放置，以及 episode 稳定性/训练模型 rollout 评测
+tags:
+  - dual_arm
+  - cable
+  - mujoco
+required_assets:
+  robots:
+    - robot_dual_arm_rm75_v1
+  end_effectors:
+    - end_effector_parallel_gripper_v1
+  objects:
+    - object_cable_v1
+  scenes:
+    - scene_dual_arm_cable_mujoco_v1
+metrics:
+  - metric_success_rate_v1
+  - metric_episode_stability_v1
+  - metric_runtime_mean_steps_v1
+  - metric_runtime_max_steps_v1
+  - metric_runtime_video_fps_v1
+  - metric_runtime_control_frequency_v1
+  - metric_runtime_mean_sim_time_sec_v1
+  - metric_runtime_mean_joint_speed_v1
+  - metric_runtime_max_joint_speed_v1
+  - metric_runtime_mean_joint_acceleration_v1
+  - metric_runtime_max_joint_acceleration_v1
+runner:
+  generate_entry: integrations/DualArmCableManipulation/platform_runner.py
+  evaluate_entry: integrations/DualArmCableManipulation/dual_arm_cable_eval_worker.py
+  backend_adapter: dual_arm_cable_service
+default_config:
+  seeds: [42]
+  episode_count: 1
+  max_steps: 2000
+  output_schema: dual_arm_cable_v1
+metadata:
+  observation_schema: multi_camera_rgb + cable_state
+  action_schema: dual_arm_joint_position
+  success_condition: episode_success_and_stretch_reached
+  availableMetricIds:
+    - metric_success_rate_v1
+    - metric_runtime_mean_steps_v1
+    - metric_runtime_max_steps_v1
+    - metric_runtime_video_fps_v1
+    - metric_runtime_control_frequency_v1
+    - metric_runtime_mean_sim_time_sec_v1
+    - metric_runtime_mean_joint_speed_v1
+    - metric_runtime_max_joint_speed_v1
+    - metric_runtime_mean_joint_acceleration_v1
+    - metric_runtime_max_joint_acceleration_v1
+  defaultMetricIds:
+    - metric_success_rate_v1
+  evaluationConfig:
+    episodes:
+      min: 1
+      max: 100
+      default: 1
+  failure_types:
+    - perception_fail
+    - grasp_fail
+    - stretch_timeout

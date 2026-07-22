@@ -1,0 +1,20 @@
+asset_id: object_cable_v1
+asset_type: object
+name: 柔性线缆
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: cable_threading 与 dual_arm 任务共用的线缆对象资源
+tags:
+  - cable
+  - deformable
+  - mujoco
+files:
+  mjcf: integrations/CableThreadingMVP/assets/objects/cable/composite_cable.xml
+metadata:
+  object_type: cable
+  deformable_or_rigid: deformable
+  default_pose: [0, 0, 0.05]
+  physical_params:
+    stiffness: medium
+    diameter_m: 0.004

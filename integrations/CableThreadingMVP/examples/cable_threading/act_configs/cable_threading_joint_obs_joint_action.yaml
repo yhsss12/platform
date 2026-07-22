@@ -1,0 +1,44 @@
+# Joint-space ACT: joint_pos + gripper obs, 8D JOINT_POSITION actions (7 joint + 1 gripper).
+# actions are derived from OSC-replay joint_pos sequences and inverse JOINT_POSITION scaling.
+# Do NOT use with OSC_POSE eval env.
+
+task_name: cable_threading
+action_dim: 8
+action_key: actions
+action_mode: joint_delta_derived
+controller_type: JOINT_POSITION
+eval_executor: joint_position
+trained_action_mode: joint_delta_derived
+preferred_policy_schema_id: joint_state_obs_joint_action
+
+low_dim_keys:
+  - robot0_joint_pos
+  - robot0_gripper_qpos
+image_keys:
+  - agentview_image
+  - robot0_eye_in_hand_image
+low_dim_dim: 9
+
+chunk_size: 20
+
+hidden_dim: 512
+dim_feedforward: 2048
+enc_layers: 4
+dec_layers: 4
+nheads: 8
+dropout: 0.1
+kl_weight: 10.0
+latent_dim: 32
+backbone: tiny_cnn
+
+batch_size: 8
+num_epochs: 50
+learning_rate: 0.0001
+weight_decay: 0.0001
+seed: 42
+
+image_size: 128
+val_ratio: 0.1
+act_variant: image_proprio
+
+dataset: runs/cable_threading/jobs/ct_gen_20260624_joint_space_replay_full/datasets/dataset.hdf5

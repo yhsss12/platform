@@ -1,0 +1,13 @@
+# 国内网络拉 docker.io 易超时：在 .env 设置 POSTGRES_BASE_IMAGE（见 docker-compose），或构建时
+# docker compose build postgres --build-arg POSTGRES_BASE_IMAGE=docker.m.daocloud.io/library/postgres:16
+ARG POSTGRES_BASE_IMAGE=postgres:16
+FROM ${POSTGRES_BASE_IMAGE}
+
+# 设置数据库初始化参数（运行时可被 compose/env 覆盖）
+ENV POSTGRES_USER=admin
+ENV POSTGRES_PASSWORD=admin123
+ENV POSTGRES_DB=eai_ide
+
+# 初始化 SQL 不在镜像内打包：由 docker-compose.postgres-minio.yml bind mount 到
+# /docker-entrypoint-initdb.d/（仅数据目录为空时执行），避免 clone 无文件时 COPY 失败或误用旧层。
+# 独立 docker run 时请自行 -v /path/eai_ide_backup.sql:/docker-entrypoint-initdb.d/00-eai-ide-seed.sql:ro

@@ -1,0 +1,88 @@
+# CableThreading — 任务配置参考
+# 此文件记录默认参数，供参考。实际参数由 Python 构造函数控制。
+
+task:
+  name: CableThreading
+  description: 用机械臂拖拽线缆末端，穿过两根桌面柱子之间的缝隙。
+
+# 支持的机器人
+robots:
+  - UR5e    # 默认
+  - Panda   # Franka Panda
+
+# 支持的线缆模型
+cable_models:
+  rmb:               # 25 段刚体链，capsule 几何
+    segments: 25
+    segment_length: 0.02
+    total_length: 0.50
+  flex:              # MuJoCo 3.x flexcomp 软体
+    vertices: 51
+    total_length: 0.50
+  composite_cable:   # MuJoCo composite cable
+    segments: 50
+    total_length: 0.50
+  composite_soft:    # 软复合线缆
+    segments: 50
+    total_length: 0.50
+
+# 难度分级
+difficulty:
+  easy:   { anchor_angle_range: 0.3, root_yaw_range: 0.3, joint_noise_scale: 0.01 }
+  medium: { anchor_angle_range: 0.6, root_yaw_range: 0.6, joint_noise_scale: 0.03 }
+  hard:   { anchor_angle_range: 1.0, root_yaw_range: 1.0, joint_noise_scale: 0.05 }
+
+control:
+  control_freq: 20          # Hz
+  horizon_default: 250      # UR5e 默认；Panda 默认 400
+  action_dim: 7             # 6 arm DOF + 1 gripper
+  position_scale: 0.04      # delta-EEF 缩放 (m)
+  action_clip: [-1.0, 1.0]
+
+scene:
+  table_full_size: [1.0, 1.0, 0.05]
+  table_friction: [1.0, 0.005, 0.0001]
+  table_offset: [0.0, 0.0, 0.8]
+
+poles:
+  pole_offset: [-0.025, 0.0]
+  pole_spacing: 0.05
+  pole_radius: 0.01
+  pole_height: 0.06
+
+cameras:
+  names: [agentview, topview]
+  height: 256
+  width: 256
+  depth: false
+  render_camera: frontview
+
+observations:
+  low_dim_keys:
+    - robot0_eef_pos       # (3,) 末端执行器位置
+    - robot0_gripper_qpos  # (2,) 夹爪关节位置
+    - cable_end_pos        # (3,) 线缆末端位置
+    - pole_points          # (6,) 两根柱子位置
+    - endpoint_goal_pos    # (3,) 目标位置
+    - attachment_state     # (1,) 是否附着
+  total_dim: 18
+  image_keys:
+    - agentview_image              # (H,W,3) 主视角
+    - robot0_eye_in_hand_image     # (H,W,3) 腕部相机
+
+success_criteria:
+  goal_tolerance: 0.055
+  height_tolerance: 0.01
+  straightness_ratio: 0.88
+  straightness_tolerance: 0.035
+  table_settle_tolerance: 0.041
+  endpoint_table_tolerance: 0.042
+  anchor_tolerance: 0.02
+  low_thread_height_margin: 0.008
+  endpoint_past_gap_margin: 0.025
+
+data_formats:
+  npz:     { description: "压缩 numpy，low-dim 数据" }
+  hdf5:    { description: "robomimic 兼容，含图像", requires: [h5py] }
+  lerobot: { description: "LeRobot v3.0，parquet + MP4", requires: [pyarrow] }
+  mp4:     { description: "视频录制", requires: [imageio] }

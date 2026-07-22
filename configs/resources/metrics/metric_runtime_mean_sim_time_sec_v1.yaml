@@ -1,0 +1,34 @@
+asset_id: metric_runtime_mean_sim_time_sec_v1
+asset_type: metric
+name: 平均仿真时长
+version: v1.0.0
+status: available
+description: 每轮 episode 的仿真时间，按 stepCount / controlFrequencyHz 计算。
+tags:
+  - runtime_metrics
+  - evaluation
+metadata:
+  displayName: 平均仿真时长
+  implemented: true
+  selectable: true
+  calculationMode: aggregate_field
+  sourceField: runMetrics.meanSimTimeSec
+  valueType: number
+  unit: "s"
+  description: 每轮 episode 的仿真时间，按 stepCount / controlFrequencyHz 计算，不等同于视频播放时长或真实运行 wall time。
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/step_metrics/episode_*/summary.json
+    - results/aggregate_result.json
+  defaultSelected: false

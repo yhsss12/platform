@@ -1,0 +1,26 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<dds>
+  <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+    <participant profile_name="server_participant" is_default_profile="true">
+      <rtps>
+        <builtin>
+          <discovery_config>
+            <discoveryProtocol>SIMPLE</discoveryProtocol>
+            <initialAnnouncements>
+              <count>10</count>
+              <period>
+                <sec>1</sec>
+                <nanosec>0</nanosec>
+              </period>
+            </initialAnnouncements>
+          </discovery_config>
+          <initialPeersList>
+            <locator><udpv4><address>100.92.32.54</address></udpv4></locator>     <!-- 你的本机 -->
+            <locator><udpv4><address>100.121.129.116</address></udpv4></locator> <!-- 已有远端 -->
+            <locator><udpv4><address>100.89.197.63</address></udpv4></locator>   <!-- 新机器自身 -->
+          </initialPeersList>
+        </builtin>
+      </rtps>
+    </participant>
+  </profiles>
+</dds> -->

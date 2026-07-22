@@ -1,0 +1,5 @@
+{
+  "task_id": "isaacsim_franka_pick_place",
+  "description": "Only videos registered here may be copied into data generation jobs. Each entry must be a real Franka Pick Place recording.",
+  "videos": {}
+}

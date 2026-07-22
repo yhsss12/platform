@@ -1,0 +1,22 @@
+asset_id: isaac_stack_timeout_rate_v1
+asset_type: metric
+name: 超时率
+version: v1.0.0
+status: available
+sim_backend: isaac_lab
+description: 因达到 horizon 上限而失败的 episode 比例。
+tags:
+  - timeout_rate
+  - isaac_block_stacking
+metadata:
+  displayName: 超时率
+  implemented: true
+  calculationMode: per_episode_failure_reason
+  sourceField: failureReason
+  failureReasonValue: horizon_reached
+  valueType: ratio
+  unit: "%"
+  applicableTaskTypes:
+    - isaac_block_stacking
+  applicableEvaluationModes:
+    - trained_model_evaluation

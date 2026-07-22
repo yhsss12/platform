@@ -1,0 +1,60 @@
+asset_id: task_cable_threading_v1
+asset_type: task
+task_type: cable_threading
+name: 线缆穿杆
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: 线缆穿杆数据生成与策略评测任务配置
+tags:
+  - cable_threading
+  - mujoco
+  - expert
+required_assets:
+  robots:
+    - robot_panda_mujoco_v1
+    - robot_ur5e_mujoco_v1
+  end_effectors:
+    - end_effector_parallel_gripper_v1
+  objects:
+    - object_cable_v1
+    - object_threading_fixture_v1
+  scenes:
+    - scene_cable_threading_mujoco_v1
+metrics:
+  - metric_cable_success_rate_v1
+  - metric_runtime_mean_steps_v1
+  - metric_runtime_max_steps_v1
+  - metric_runtime_video_fps_v1
+  - metric_runtime_control_frequency_v1
+  - metric_runtime_mean_sim_time_sec_v1
+runner:
+  generate_entry: integrations/CableThreadingMVP/run.py expert
+  evaluate_entry: integrations/CableThreadingMVP/run.py eval
+  backend_adapter: cable_threading_service
+default_config:
+  default_robot: Panda
+  robot: Panda
+  seeds: [42]
+  episode_count: 10
+  max_steps: 600
+  output_schema: cable_threading_v1
+  eval_display_camera: agentview
+  allow_camera_fallback: false
+metadata:
+  observation_schema: agentview_rgb + proprioception
+  action_schema: joint_position
+  success_condition: cable_passes_gap
+  availableMetricIds:
+    - metric_cable_success_rate_v1
+    - metric_runtime_mean_steps_v1
+    - metric_runtime_max_steps_v1
+    - metric_runtime_video_fps_v1
+    - metric_runtime_control_frequency_v1
+    - metric_runtime_mean_sim_time_sec_v1
+  defaultMetricIds:
+    - metric_cable_success_rate_v1
+  failure_types:
+    - timeout
+    - collision
+    - grasp_fail

@@ -1,0 +1,9 @@
+{
+  "assets_source": "NVIDIA Isaac Sim built-in assets and runtime-generated cube/ground plane",
+  "robot": "Franka Panda spawned by official FrankaPickPlace / Franka class",
+  "object": "cube spawned by official pick-place example",
+  "ground": "GroundPlane",
+  "light": "DomeLight",
+  "requires_copying_assets_into_pack": false,
+  "notes": "Assets are loaded from Isaac Sim installation/runtime; this pack intentionally does not redistribute NVIDIA assets."
+}

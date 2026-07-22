@@ -1,0 +1,36 @@
+asset_id: task_isaacsim_franka_pick_place_v1
+asset_type: task
+task_type: isaacsim_franka_pick_place
+name: Franka 物体搬运
+version: v1.0.0
+status: integration_pending
+sim_backend: isaacsim
+description: Isaac Sim FrankaPickPlace controller（已降级，演示路径切换至 Isaac Lab 原生物块堆叠）
+tags:
+  - isaacsim
+  - franka
+  - pick_and_place
+  - official_expert
+required_assets:
+  robots:
+    - robot_franka_panda_v1
+  scenes:
+    - scene_isaacsim_franka_pick_place_v1
+metrics:
+  - metric_pick_place_success_rate_v1
+runner:
+  generate_entry: integrations/IsaacSimFrankaPickPlace/expert/official_franka_pick_place_adapter.py
+  backend_adapter: isaacsim_franka_pick_place_service
+default_config:
+  seeds: [0]
+  episode_count: 1
+  max_episodes: 5
+  headless: true
+  save_video: true
+  save_trajectory: true
+  output_schema: isaacsim_franka_pick_place_v1
+metadata:
+  observation_schema: proprioception + object_pose
+  action_schema: joint_position + gripper
+  success_condition: controller_done_and_object_placed
+  expert_source: NVIDIA Isaac Sim FrankaPickPlace official controller

@@ -1,0 +1,21 @@
+name: cable-threading-mvp
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy>=1.24.0
+  - mujoco>=3.0.0
+  - h5py>=3.8.0
+  - pip
+  - pip:
+    - imageio>=2.31.0
+    - imageio-ffmpeg>=0.4.0
+    - pyarrow>=12.0.0
+    - robomimic>=0.3.0
+    - torch>=2.0.0
+    # robomimic BC 训练子进程依赖（PYTHONNOUSERSITE=1 下须写入 env）
+    - psutil>=5.9.0
+    - tqdm>=4.65.0
+    - sympy>=1.12
+    - matplotlib>=3.7.0

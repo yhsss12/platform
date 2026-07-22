@@ -1,0 +1,21 @@
+asset_id: isaac_stack_success_rate_v1
+asset_type: metric
+name: 成功率
+version: v1.0.0
+status: available
+sim_backend: isaac_lab
+description: 训练模型在物块堆叠任务中的成功 episode 比例。
+tags:
+  - success_rate
+  - isaac_block_stacking
+metadata:
+  displayName: 成功率
+  implemented: true
+  calculationMode: aggregate_field
+  sourceField: successRate
+  valueType: ratio
+  unit: "%"
+  applicableTaskTypes:
+    - isaac_block_stacking
+  applicableEvaluationModes:
+    - trained_model_evaluation

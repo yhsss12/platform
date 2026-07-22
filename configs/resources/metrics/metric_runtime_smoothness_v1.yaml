@@ -1,0 +1,33 @@
+asset_id: metric_runtime_smoothness_v1
+asset_type: metric
+name: 动作平稳性
+version: v1.0.0
+status: available
+description: 基于相邻 step 的 action 变化量计算；越接近 1 表示 action 变化越平缓，不等同于末端轨迹平稳性。
+tags:
+  - runtime_metrics
+  - evaluation
+metadata:
+  displayName: 动作平稳性
+  implemented: true
+  selectable: true
+  calculationMode: aggregate_field
+  sourceField: runMetrics.smoothnessScore
+  valueType: number
+  unit: ""
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/step_metrics/episode_*/summary.json
+    - results/aggregate_result.json
+  defaultSelected: false

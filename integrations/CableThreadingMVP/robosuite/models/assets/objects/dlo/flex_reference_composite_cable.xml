@@ -1,0 +1,51 @@
+<mujoco model="flex_reference_composite_cable">
+  <!--
+    Composite cable — 改进接触 + 增粗半径：
+    - 50 段、0.5m 总长、0.01m 段长、0.004m 半径（恢复原始半径）
+    - bend=1.2e3, twist=3e2（保持原始刚度）
+    - condim=6, friction=3.0/0.04/0.001（改善摩擦）
+    - damping=0.015, density=1000
+  -->
+
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable"/>
+  </extension>
+
+  <default>
+    <geom condim="6" friction="3.0 0.04 0.001" solref="0.006 1"
+          solimp="0.96 0.992 0.0005" margin="0.0015"/>
+  </default>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <composite
+          prefix="flexrefc_"
+          type="cable"
+          curve="s"
+          count="50 1 1"
+          size="0.5"
+          offset="-0.25 0 0"
+          initial="none"
+        >
+          <plugin plugin="mujoco.elasticity.cable">
+            <config key="twist" value="3e2"/>
+            <config key="bend" value="1.2e3"/>
+            <config key="vmax" value="0"/>
+          </plugin>
+          <joint kind="main" damping="0.015" armature="0.0004"/>
+          <geom
+            type="capsule"
+            size="0.004"
+            group="0"
+            rgba="0.8 0.2 0.2 1"
+            density="1000"
+          />
+        </composite>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.004" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.004" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.25 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

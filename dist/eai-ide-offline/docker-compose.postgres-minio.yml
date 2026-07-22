@@ -1,0 +1,50 @@
+# 客户现场：PostgreSQL + MinIO（先于此文件 up，再 up docker-compose.yml）
+#
+name: eai-ide-infra
+
+services:
+  postgres:
+    image: eai-postgres:local
+    pull_policy: never
+    container_name: eai-postgres
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin123}
+      POSTGRES_DB: ${POSTGRES_DB:-eai_ide}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./eai_ide_backup.sql:/docker-entrypoint-initdb.d/00-eai-ide-seed.sql:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'pg_isready -h 127.0.0.1 -p ${POSTGRES_PORT:-5432} -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  minio:
+    image: eai-minio:local
+    pull_policy: never
+    container_name: eai-minio
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-Admin@123}
+      MINIO_PORT: ${MINIO_API_PORT:-9000}
+      CONSOLE_PORT: ${MINIO_CONSOLE_PORT:-9001}
+    volumes:
+      - minio-data:/data
+
+volumes:
+  postgres-data:
+  minio-data:

@@ -1,0 +1,302 @@
+{
+  "mode": "failed_conditioned_mimicgen_repair",
+  "config": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15703_demo100/demo_src_stack_task_D0/mg_config.json",
+  "source_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/source/stack_prepared.hdf5",
+  "success_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15703_demo100/demo_src_stack_task_D0/demo.hdf5",
+  "failed_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15703_demo100/demo_src_stack_task_D0/demo_failed.hdf5",
+  "raw_success": 100,
+  "raw_failed": 12,
+  "raw_total": 112,
+  "raw_success_rate": 0.8928571428571429,
+  "evaluated_failed_demos": 12,
+  "candidates_per_demo": 12,
+  "candidate_plan": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/outputs/stack_seed15703_selector/pinn_utility_boundary_union_candidate_plan.jsonl",
+  "num_candidates": 60,
+  "num_candidate_success": 44,
+  "candidate_success_rate": 0.7333333333333333,
+  "repaired_demo_keys": [
+    "demo_0",
+    "demo_1",
+    "demo_2",
+    "demo_3",
+    "demo_4",
+    "demo_6",
+    "demo_7",
+    "demo_8",
+    "demo_9",
+    "demo_10",
+    "demo_11"
+  ],
+  "repaired_count_in_evaluated": 11,
+  "projected_total_success_if_unique_repairs": 111,
+  "projected_total_success_rate_if_unique_repairs": 0.9910714285714286,
+  "num_problematic": 0,
+  "per_demo": {
+    "demo_11": {
+      "context_energy": 4.4383206881023725,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.407406945166532,
+      "best_success_candidate": 155,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          5,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp10_safe"
+      }
+    },
+    "demo_6": {
+      "context_energy": 4.529662363058691,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 3.5892516097031386,
+      "best_success_candidate": 153,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.05_interp8_safe"
+      }
+    },
+    "demo_7": {
+      "context_energy": 4.788486735730858,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.481049789780769,
+      "best_success_candidate": 210,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_10": {
+      "context_energy": 5.034024922297823,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.8692275419194924,
+      "best_success_candidate": 207,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp8_safe"
+      }
+    },
+    "demo_1": {
+      "context_energy": 5.2461693796418505,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.396078591508473,
+      "best_success_candidate": 186,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp8_safe"
+      }
+    },
+    "demo_3": {
+      "context_energy": 5.274905661013294,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 3.5935455458985928,
+      "best_success_candidate": 151,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.08_interp15_safe"
+      }
+    },
+    "demo_9": {
+      "context_energy": 5.5300449545778605,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.7489448549053193,
+      "best_success_candidate": 144,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_5": {
+      "context_energy": 6.468698535640504,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 6.054985914629103,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp8_safe"
+      }
+    },
+    "demo_0": {
+      "context_energy": 6.5608985072070585,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.6726388043952043,
+      "best_success_candidate": 121,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": true,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_4": {
+      "context_energy": 7.493711099993911,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 3.6960770985234452,
+      "best_success_candidate": 137,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.08_interp3_safe"
+      }
+    },
+    "demo_8": {
+      "context_energy": 8.211121729796506,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 3.5767586838638663,
+      "best_success_candidate": 219,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp10_safe"
+      }
+    },
+    "demo_2": {
+      "context_energy": 21.11766096441331,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 3.7581938246965394,
+      "best_success_candidate": 201,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          5,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    }
+  },
+  "feedback_path": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/outputs/stack_seed15703_rollout/feedback_candidates.jsonl",
+  "elapsed_sec": 231.70042419433594
+}

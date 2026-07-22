@@ -1,0 +1,61 @@
+# VCS & secrets（构建上下文禁止带入镜像）
+.git
+.gitignore
+**/.env
+**/.env.*
+!**/.env.example
+!backend/.env.example
+
+# 现场部署包（不打进 eai-ide 镜像）
+release/
+
+# PyArmor 本地中间目录
+**/.pyarmor-build
+
+# Python
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+backend/tests
+backend/logs
+backend/data
+backend/storage
+backend/project
+backend/reproduce_*.py
+backend/inspect_mcap.py
+backend/debug_db_path.py
+backend/check_env.py
+backend/requirements-dev.txt
+
+# Node / Next（在 Dockerfile builder 内重新安装与构建）
+node_modules
+.next
+out
+coverage
+test-results
+temp
+
+# 文档与日志
+docs
+logs
+*.log
+**/*.md
+!release/**/*.md
+
+# 大型可选 ROS 树（平台镜像不需要）
+scripts/rm_robot
+
+# Agent 大包（运行时按 manifest 提供，构建可不 COPY 整包）
+backend/agent_packages/*.tar.gz
+agent/wheelhouse
+
+# 本地 scratch
+.DS_Store
+.cursor
+.vscode
+.pids
+ceshi
+
+# 数据库种子（由 compose 卷挂载，不进 app 镜像）
+eai_ide_backup.sql
+eai_ide_backup_20*.sql

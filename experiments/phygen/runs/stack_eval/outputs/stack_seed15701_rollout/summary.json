@@ -1,0 +1,188 @@
+{
+  "mode": "failed_conditioned_mimicgen_repair",
+  "config": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15701_demo100/demo_src_stack_task_D0/mg_config.json",
+  "source_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/source/stack_prepared.hdf5",
+  "success_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15701_demo100/demo_src_stack_task_D0/demo.hdf5",
+  "failed_hdf5": "/home/ubuntu/project/eai-idev2.1/mimicgen_generated/stack_d0_100x3_20260715/stack_d0_seed15701_demo100/demo_src_stack_task_D0/demo_failed.hdf5",
+  "raw_success": 100,
+  "raw_failed": 7,
+  "raw_total": 107,
+  "raw_success_rate": 0.9345794392523364,
+  "evaluated_failed_demos": 7,
+  "candidates_per_demo": 12,
+  "candidate_plan": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/outputs/stack_seed15701_selector/pinn_utility_boundary_union_candidate_plan.jsonl",
+  "num_candidates": 35,
+  "num_candidate_success": 27,
+  "candidate_success_rate": 0.7714285714285715,
+  "repaired_demo_keys": [
+    "demo_0",
+    "demo_1",
+    "demo_2",
+    "demo_3",
+    "demo_4",
+    "demo_5",
+    "demo_6"
+  ],
+  "repaired_count_in_evaluated": 7,
+  "projected_total_success_if_unique_repairs": 107,
+  "projected_total_success_rate_if_unique_repairs": 1.0,
+  "num_problematic": 0,
+  "per_demo": {
+    "demo_0": {
+      "context_energy": 4.77180667328223,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 4.499880466371981,
+      "best_success_candidate": 207,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp10_safe"
+      }
+    },
+    "demo_6": {
+      "context_energy": 4.963178879343018,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.375213195471936,
+      "best_success_candidate": 153,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_3": {
+      "context_energy": 5.186261628397884,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 4.2111685014731775,
+      "best_success_candidate": 151,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.08_interp15_safe"
+      }
+    },
+    "demo_2": {
+      "context_energy": 5.251341269780924,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 3.4756018424054296,
+      "best_success_candidate": 117,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.08_interp3_safe"
+      }
+    },
+    "demo_1": {
+      "context_energy": 7.743157996499692,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 4.244055871817251,
+      "best_success_candidate": 186,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_5": {
+      "context_energy": 14.10805132183106,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 4.0736587620462394,
+      "best_success_candidate": 221,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp8_safe"
+      }
+    },
+    "demo_4": {
+      "context_energy": 19.198426498299774,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 3.23375352081114,
+      "best_success_candidate": 137,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per0_noise0.05_interp3_safe"
+      }
+    }
+  },
+  "feedback_path": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/stack_eval/outputs/stack_seed15701_rollout/feedback_candidates.jsonl",
+  "elapsed_sec": 129.9335424900055
+}

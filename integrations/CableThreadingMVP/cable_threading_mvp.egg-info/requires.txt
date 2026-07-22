@@ -1,0 +1,17 @@
+numpy>=1.24.0
+mujoco>=3.0.0
+h5py>=3.8.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.0
+
+[all]
+pyarrow>=12.0.0
+robomimic>=0.3.0
+torch>=2.0.0
+
+[lerobot]
+pyarrow>=12.0.0
+
+[ml]
+robomimic>=0.3.0
+torch>=2.0.0

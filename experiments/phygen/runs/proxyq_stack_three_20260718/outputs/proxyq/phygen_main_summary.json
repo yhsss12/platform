@@ -1,0 +1,2179 @@
+{
+  "method": "phygen_residual_field_pinn_main_proxy_quality",
+  "paper_main_method": true,
+  "task_adapter": "stack_three",
+  "candidate_mode": "safe",
+  "active_loss_switches": {
+    "energy_loss": true,
+    "consistency_loss": true,
+    "margin_loss": true,
+    "physics_residual_loss": true,
+    "boundary_loss": true,
+    "differential_loss": true,
+    "hjb_pde_loss": true,
+    "transport_pde_loss": true
+  },
+  "theta_feature_keys": [
+    "select_src_per_subtask",
+    "transform_first_robot_pose",
+    "interpolate_from_last_target_pose",
+    "strategy_nearest_neighbor_object",
+    "strategy_random",
+    "action_noise",
+    "num_interpolation_steps",
+    "num_fixed_steps",
+    "offset_low",
+    "offset_high",
+    "offset_width",
+    "offset_mid",
+    "nn_k"
+  ],
+  "discrete_repair_keys": [
+    "select_src_per_subtask",
+    "transform_first_robot_pose",
+    "interpolate_from_last_target_pose",
+    "strategy_nearest_neighbor_object",
+    "strategy_random"
+  ],
+  "relaxed_continuous_repair_keys": [
+    "action_noise",
+    "num_interpolation_steps",
+    "num_fixed_steps",
+    "offset_low",
+    "offset_high",
+    "nn_k"
+  ],
+  "independent_z_repair_keys": [
+    "action_noise",
+    "num_interpolation_steps",
+    "num_fixed_steps",
+    "offset_low",
+    "offset_high",
+    "nn_k"
+  ],
+  "derived_theta_feature_keys": [
+    "offset_width",
+    "offset_mid"
+  ],
+  "pinn_gradient_domain": "continuous",
+  "success_head_mode": "residual_induced",
+  "success_residual_threshold": 0.25,
+  "success_residual_beta": 8.0,
+  "model_semantics": {
+    "V": "residual value / cost-to-success field",
+    "q": "structured physics residual source from component heads",
+    "p": "residual-induced success probability p=sigmoid(beta*(tau-V)+eps)",
+    "selector_score": "A(c,theta)=pred_energy - lambda_p*pred_success_prob - lambda_b*boundary_bonus"
+  },
+  "loss_groups": {
+    "supervised_rollout": [
+      "loss_energy",
+      "loss_success",
+      "loss_consistency",
+      "loss_margin"
+    ],
+    "residual_components": [
+      "loss_components",
+      "loss_component_total",
+      "loss_component_success"
+    ],
+    "field_consistency": [
+      "loss_total_consistency",
+      "loss_physics_residual",
+      "loss_differential"
+    ],
+    "boundary_collocation": [
+      "loss_boundary",
+      "loss_hjb_pde",
+      "loss_collocation_transport_pde"
+    ]
+  },
+  "component_weight": 0.45,
+  "pinn_weight": 0.35,
+  "standard_pinn_weight": 0.35,
+  "governing_equations": [
+    "theta=(d,z), where d is discrete repair mode and z contains independent relaxed-continuous repair parameters; offset_width/mid are derived features",
+    "V(c,d,z)=E_pred(c,d,z)",
+    "q(c,d,z)=weighted_sum(E_xy,E_transport,E_lift,E_contact,E_bilateral,E_dynamics,E_slip,E_coupling)",
+    "0.5 * ||grad_z V||^2 - q(c,d,z) = 0",
+    "grad_z p + beta * p * (1-p) * grad_z V = 0"
+  ],
+  "num_feedback_records": 1379,
+  "num_feedback_success": 425,
+  "num_feedback_demos": 68,
+  "training_device": "cuda:0",
+  "proxy_quality": true,
+  "proxy_quality_config": {
+    "calibration_weight": 0.1,
+    "ranking_weight": 0.2,
+    "ranking_margin": 0.1,
+    "neighbor_count": 32,
+    "definition": "0.50*success_lcb + 0.25*physics + 0.15*repair_regularity + 0.10*coverage",
+    "kernel_bandwidth_squared": 7.1245622634887695,
+    "num_ranking_pairs": 68,
+    "success_lcb_mean": 0.24542148411273956,
+    "success_lcb_min": 0.0,
+    "success_lcb_max": 0.7367991209030151,
+    "proxy_quality_mean": 0.3674335479736328,
+    "proxy_quality_min": 0.028271235525608063,
+    "proxy_quality_max": 0.7855110764503479
+  },
+  "offline_budget": 5,
+  "offline_oracle_demo_success": 68,
+  "offline_selector_demo_success": 67,
+  "offline_per_demo": [
+    {
+      "demo_key": "demo_0",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4160,
+        4321,
+        4,
+        4218,
+        4317
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.8612665659709909,
+        0.759362928327815,
+        1.0474402969921073,
+        14.501094773493842,
+        0.717265679349738
+      ]
+    },
+    {
+      "demo_key": "demo_1",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.1525270942416284,
+        0.3248327211300762,
+        0.42627156068450844,
+        0.8196871540516907,
+        1.1335307803628583
+      ]
+    },
+    {
+      "demo_key": "demo_2",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.0661289865086965,
+        12.520158254849646,
+        1.9767073342170813,
+        1.6721372925245408,
+        1.1556923360721236
+      ]
+    },
+    {
+      "demo_key": "demo_3",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        2,
+        1,
+        3,
+        3216
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.38196528386878087,
+        12.085730538690482,
+        0.7052804723751623,
+        0.22181403787169918,
+        14.174187853720133
+      ]
+    },
+    {
+      "demo_key": "demo_4",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.405382639362999,
+        0.7041182041520457,
+        0.9527084615985031,
+        1.072391383450778,
+        0.8888027885116513
+      ]
+    },
+    {
+      "demo_key": "demo_5",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        3159,
+        3225,
+        1,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        1.6775913769082411,
+        0.7236810706433879,
+        0.9008938472342559,
+        14.686669934297035,
+        12.85666326520505
+      ]
+    },
+    {
+      "demo_key": "demo_6",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3,
+        5
+      ],
+      "selected_successes": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        13.541514664690931,
+        0.8704830292572995,
+        11.5868492916751,
+        16.3484983831374,
+        16.518468308916177
+      ]
+    },
+    {
+      "demo_key": "demo_7",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        2,
+        1,
+        3,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.7864793840616252,
+        0.6746999843233313,
+        1.3383102145414632,
+        0.9055994819276031,
+        11.554649876419175
+      ]
+    },
+    {
+      "demo_key": "demo_8",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        1.0592495766729946,
+        1.8461213662084464,
+        0.8182999049531651,
+        13.963143197738678,
+        32.06637538553496
+      ]
+    },
+    {
+      "demo_key": "demo_9",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        15.948195287527534,
+        1.6010428975228193,
+        0.7532706460672985,
+        10.494686897008808,
+        0.5730912818241477
+      ]
+    },
+    {
+      "demo_key": "demo_10",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        4156,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.7286854625931857,
+        0.6092889951071431,
+        16.513398632483508,
+        0.7343204162470305,
+        14.492752356544734
+      ]
+    },
+    {
+      "demo_key": "demo_11",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        4368,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        1.8929700017856823,
+        0.678346570509641,
+        0.7962620240487704,
+        1.9370272690260912,
+        23.36857499064959
+      ]
+    },
+    {
+      "demo_key": "demo_12",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4072,
+        4331,
+        4109,
+        4,
+        1
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.9725445004491448,
+        0.8933515508456896,
+        1.6542572545075438,
+        1.0234523291347992,
+        1.709394559345787
+      ]
+    },
+    {
+      "demo_key": "demo_13",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.6242341079110704,
+        0.6860725615152131,
+        0.7859226214527312,
+        26.065105712170936,
+        0.9516817388243691
+      ]
+    },
+    {
+      "demo_key": "demo_14",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.46211152040930853,
+        0.5361390643805852,
+        0.889698204041893,
+        11.034575793371504,
+        34.070750548907824
+      ]
+    },
+    {
+      "demo_key": "demo_15",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        7.495554740003987,
+        15.882537982440759,
+        1.2166939360758704,
+        18.37786956429739,
+        13.024692874108371
+      ]
+    },
+    {
+      "demo_key": "demo_16",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        17.650384009923563,
+        1.2022143850234772,
+        0.731741243613007,
+        0.4867066165902839,
+        10.188783710814533
+      ]
+    },
+    {
+      "demo_key": "demo_17",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3,
+        3168
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.6960257295288943,
+        0.888240701844733,
+        9.807033859207097,
+        0.5423989412040588,
+        0.42276578997541425
+      ]
+    },
+    {
+      "demo_key": "demo_18",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4314,
+        4,
+        4073,
+        1,
+        4088
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        3.7746844555266517,
+        0.6929102369308818,
+        0.6068112219053213,
+        0.9611636720898132,
+        29.26443641222191
+      ]
+    },
+    {
+      "demo_key": "demo_19",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4244,
+        4,
+        1,
+        4006,
+        4231
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.6689554068586063,
+        0.39541678848166883,
+        1.291303982611908,
+        0.8117251346178611,
+        0.41176965495324336
+      ]
+    },
+    {
+      "demo_key": "demo_20",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        3128,
+        2,
+        1,
+        3
+      ],
+      "selected_successes": [
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "selected_energies": [
+        18.983535791298767,
+        1.4630018286091313,
+        9.117892781348106,
+        0.5861733682205843,
+        8.861245345773227
+      ]
+    },
+    {
+      "demo_key": "demo_21",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        4304,
+        4307,
+        2,
+        1
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.8839601067932813,
+        0.7234756813892139,
+        0.6248476774258267,
+        0.6223427292228767,
+        16.24873928283949
+      ]
+    },
+    {
+      "demo_key": "demo_22",
+      "num_candidates": 43,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        4260,
+        5166,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.5161172135979314,
+        1.2482723787375232,
+        17.94191076444082,
+        15.519140819227266,
+        0.7760567825184083
+      ]
+    },
+    {
+      "demo_key": "demo_23",
+      "num_candidates": 98,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1027,
+        2170,
+        1,
+        5017
+      ],
+      "selected_successes": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        9.591416966994174,
+        9.496068485686186,
+        1.3795824917828199,
+        9.484594314959653,
+        10.244393570256053
+      ]
+    },
+    {
+      "demo_key": "demo_24",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.9490702211769343,
+        27.88552537796417,
+        1.0414472897373397,
+        0.5387189917522862,
+        1.3860461967873126
+      ]
+    },
+    {
+      "demo_key": "demo_25",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3018,
+        4,
+        1,
+        3153,
+        3
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.8141473707969356,
+        11.518563284850204,
+        9.880926844031528,
+        0.7541309589353912,
+        0.8768152203258808
+      ]
+    },
+    {
+      "demo_key": "demo_26",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        4373,
+        2
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        1.2899512088189886,
+        15.243610400520375,
+        0.911725087064064,
+        0.81076107053449,
+        18.92192286324146
+      ]
+    },
+    {
+      "demo_key": "demo_27",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.7240999286800537,
+        0.3838566579307289,
+        1.06207187088788,
+        1.9734864857641337,
+        0.7417592904707284
+      ]
+    },
+    {
+      "demo_key": "demo_28",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.7733551537832813,
+        17.96902189299483,
+        1.2734631465399868,
+        15.690315386756982,
+        1.1347100061688584
+      ]
+    },
+    {
+      "demo_key": "demo_29",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.3215872770892938,
+        0.6005442691120366,
+        16.176360026783215,
+        1.5146678414304051,
+        0.9111925332076928
+      ]
+    },
+    {
+      "demo_key": "demo_30",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.5602020824741702,
+        0.8660679610186048,
+        19.02859202783348,
+        1.2675269723185045,
+        8.017377718365298
+      ]
+    },
+    {
+      "demo_key": "demo_31",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        2,
+        1,
+        3,
+        3057
+      ],
+      "selected_successes": [
+        false,
+        false,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        20.188735361819752,
+        17.505121000333105,
+        1.449124202420887,
+        16.885004376103094,
+        1.3192682302713465
+      ]
+    },
+    {
+      "demo_key": "demo_32",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3158,
+        3,
+        2
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        13.167380925088839,
+        0.7651655714157697,
+        1.0196016260008722,
+        19.99388687255657,
+        0.827280678956673
+      ]
+    },
+    {
+      "demo_key": "demo_33",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        4368,
+        1,
+        4039,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.5049926526665608,
+        0.6801267146685693,
+        1.0682326563663689,
+        0.6068131367339936,
+        0.5923396550456766
+      ]
+    },
+    {
+      "demo_key": "demo_34",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4276,
+        4,
+        4024,
+        1,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        1.0631323611760477,
+        1.4194826847568978,
+        1.3624531751904798,
+        10.0455815692339,
+        40.484606338235274
+      ]
+    },
+    {
+      "demo_key": "demo_35",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.236620596055587,
+        0.6405849927223338,
+        0.5988596770323138,
+        0.6830169779960579,
+        0.5772811953921098
+      ]
+    },
+    {
+      "demo_key": "demo_36",
+      "num_candidates": 38,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        1169,
+        1029,
+        1187,
+        4,
+        1073
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.925341903879667,
+        0.9220258202283488,
+        0.8486478242697427,
+        14.376845497537671,
+        0.6338018222450889
+      ]
+    },
+    {
+      "demo_key": "demo_37",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        4092,
+        4217,
+        1,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.4335387429683398,
+        0.9942960669774167,
+        0.8570289171737978,
+        0.7998677482224671,
+        1.0326172176731978
+      ]
+    },
+    {
+      "demo_key": "demo_38",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.7835529354312892,
+        0.5281970140381477,
+        0.9896169335017146,
+        1.1361347005488396,
+        16.302784658366726
+      ]
+    },
+    {
+      "demo_key": "demo_39",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        3188,
+        1,
+        3,
+        5
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        7.798816782652788,
+        2.430570285140248,
+        1.118515186094045,
+        13.83966998902946,
+        9.283588469724291
+      ]
+    },
+    {
+      "demo_key": "demo_40",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.5883572605929638,
+        0.27833878237785703,
+        0.7988184287439705,
+        0.5395222393242277,
+        1.088522623301484
+      ]
+    },
+    {
+      "demo_key": "demo_41",
+      "num_candidates": 38,
+      "oracle_success": true,
+      "selector_success": false,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        21.422201303317,
+        19.643883711661925,
+        12.444665595745894,
+        9.053696716388686,
+        15.240877955956368
+      ]
+    },
+    {
+      "demo_key": "demo_42",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        4134,
+        1,
+        2,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.8404355913649239,
+        7.027012222475406,
+        9.753736549552706,
+        0.5440829409434889,
+        0.4216656629580047
+      ]
+    },
+    {
+      "demo_key": "demo_43",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        3000,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.8699066604423544,
+        0.7977718855978452,
+        1.0019506226563668,
+        1.1859589285830983,
+        0.6626535465226925
+      ]
+    },
+    {
+      "demo_key": "demo_44",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3045,
+        4,
+        2,
+        1,
+        3
+      ],
+      "selected_successes": [
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "selected_energies": [
+        1.20019142390516,
+        10.68801562546299,
+        21.53798141866329,
+        0.6357794829079344,
+        17.08800471425506
+      ]
+    },
+    {
+      "demo_key": "demo_45",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        3062
+      ],
+      "selected_successes": [
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "selected_energies": [
+        1.0322916989330233,
+        32.017457606172385,
+        9.88714807743112,
+        20.38764813555622,
+        0.42463420066975793
+      ]
+    },
+    {
+      "demo_key": "demo_46",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        3003,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.27494588559472,
+        1.1624768365880702,
+        1.0265132818260105,
+        0.7631535641329659,
+        1.0517618002922915
+      ]
+    },
+    {
+      "demo_key": "demo_47",
+      "num_candidates": 43,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        5418,
+        5249,
+        4039,
+        3149,
+        4374
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        1.0230509840853075,
+        17.374242400831854,
+        24.905408164194466,
+        18.746790566850112,
+        36.54149662810559
+      ]
+    },
+    {
+      "demo_key": "demo_48",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4122,
+        4251,
+        4154,
+        4126,
+        4059
+      ],
+      "selected_successes": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        1.3084910895978834,
+        31.269694062087858,
+        0.8096915552386202,
+        14.538553182075201,
+        0.7018963696651189
+      ]
+    },
+    {
+      "demo_key": "demo_49",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "selected_energies": [
+        1.8003533743168796,
+        0.7657420598383805,
+        0.5602093234677429,
+        0.5105100795789583,
+        8.418229835765315
+      ]
+    },
+    {
+      "demo_key": "demo_50",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        4202,
+        2,
+        1,
+        4352
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.541102727309645,
+        2.3950134361069915,
+        1.0452553446003838,
+        15.597476496923793,
+        0.6181892150679186
+      ]
+    },
+    {
+      "demo_key": "demo_51",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        2,
+        5,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.45932445336398675,
+        0.33948564767000017,
+        1.0744657753019449,
+        0.23512678462161216,
+        0.5567964810247139
+      ]
+    },
+    {
+      "demo_key": "demo_52",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4348,
+        4374,
+        4,
+        2,
+        1
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "selected_energies": [
+        0.6395749269239421,
+        0.7656937920740765,
+        16.8432041411227,
+        0.6477685108501646,
+        29.195733914343045
+      ]
+    },
+    {
+      "demo_key": "demo_53",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        2
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.4167064667011114,
+        0.963219793394895,
+        0.3019986968393753,
+        0.9816785549339283,
+        4.944184559928817
+      ]
+    },
+    {
+      "demo_key": "demo_54",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3210,
+        4,
+        1,
+        3122,
+        2
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.5159529034429443,
+        0.8079419446692504,
+        1.4125466993943046,
+        8.59209780888297,
+        12.104823711716957
+      ]
+    },
+    {
+      "demo_key": "demo_55",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        2,
+        1,
+        3,
+        3150
+      ],
+      "selected_successes": [
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "selected_energies": [
+        10.60909516509131,
+        10.138777311095206,
+        11.719745815051079,
+        1.5445693246396033,
+        0.46015945126760527
+      ]
+    },
+    {
+      "demo_key": "demo_56",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        17.685688407440217,
+        34.627003372570385,
+        0.4635152037412875,
+        0.982411882499271,
+        0.5473340505614346
+      ]
+    },
+    {
+      "demo_key": "demo_57",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        3201,
+        1,
+        3004,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.7300716614059856,
+        0.8913211930772115,
+        0.9833527394803309,
+        1.3597510680084115,
+        0.38796197534496324
+      ]
+    },
+    {
+      "demo_key": "demo_58",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        7.420532684228479,
+        0.752519473972585,
+        0.6325950201275027,
+        0.6372439621777564,
+        1.2562537084599477
+      ]
+    },
+    {
+      "demo_key": "demo_59",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        5,
+        3051
+      ],
+      "selected_successes": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        14.676539800854503,
+        0.9584951967047538,
+        0.6613683808285166,
+        0.7072472750645907,
+        1.0360418421594
+      ]
+    },
+    {
+      "demo_key": "demo_60",
+      "num_candidates": 13,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3188,
+        4,
+        2,
+        1,
+        3
+      ],
+      "selected_successes": [
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "selected_energies": [
+        0.8182596657955953,
+        15.37429068508785,
+        8.749694630018464,
+        1.6042160176556943,
+        1.1785634964902454
+      ]
+    },
+    {
+      "demo_key": "demo_61",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        4291,
+        4293,
+        3
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "selected_energies": [
+        1.429213285076652,
+        1.0835435018997637,
+        1.134309522859085,
+        24.859209632618892,
+        0.8060260862421534
+      ]
+    },
+    {
+      "demo_key": "demo_62",
+      "num_candidates": 23,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4,
+        1,
+        3,
+        2,
+        5
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "selected_energies": [
+        1.191881312864954,
+        1.2690999679226889,
+        0.773440089544535,
+        1.2032935686874335,
+        0.49068200342021717
+      ]
+    },
+    {
+      "demo_key": "demo_63",
+      "num_candidates": 15,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4032,
+        4192,
+        4338,
+        3142,
+        4058
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        false,
+        true
+      ],
+      "selected_energies": [
+        0.5964766756848302,
+        1.6955318423744359,
+        21.804274683623046,
+        9.69594446417592,
+        1.2404050849179566
+      ]
+    },
+    {
+      "demo_key": "demo_64",
+      "num_candidates": 5,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3157,
+        3018,
+        3177,
+        3031,
+        3213
+      ],
+      "selected_successes": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.30844643325304055,
+        30.0,
+        30.0,
+        30.0,
+        30.0
+      ]
+    },
+    {
+      "demo_key": "demo_65",
+      "num_candidates": 35,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        5022,
+        5437,
+        4066,
+        4147,
+        5102
+      ],
+      "selected_successes": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.8460466475950837,
+        9.607487603778472,
+        9.998356160541451,
+        15.168499536698457,
+        14.743405966667362
+      ]
+    },
+    {
+      "demo_key": "demo_66",
+      "num_candidates": 15,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        4376,
+        4012,
+        4080,
+        4262,
+        4106
+      ],
+      "selected_successes": [
+        true,
+        true,
+        true,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.9031213947072086,
+        0.8421127835197769,
+        1.6033014033898758,
+        9.600018144631237,
+        10.339491895794204
+      ]
+    },
+    {
+      "demo_key": "demo_67",
+      "num_candidates": 5,
+      "oracle_success": true,
+      "selector_success": true,
+      "selected_candidate_indices": [
+        3194,
+        3018,
+        3131,
+        3103,
+        3253
+      ],
+      "selected_successes": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "selected_energies": [
+        0.4849977257773538,
+        0.4821280090424488,
+        9.355673532829112,
+        30.0,
+        30.0
+      ]
+    }
+  ],
+  "target_failed_hdf5": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/data/demo_failed.hdf5",
+  "loss_history": [
+    {
+      "epoch": 1.0,
+      "loss": 1.8457118272781372,
+      "loss_energy": 0.21904683113098145,
+      "loss_success": 1.6895023584365845,
+      "loss_consistency": 1.691323161125183,
+      "loss_margin": 0.11160307377576828,
+      "loss_components": 0.10200509428977966,
+      "loss_component_total": 0.08575157821178436,
+      "loss_component_success": 0.7758119702339172,
+      "loss_total_consistency": 0.1665036827325821,
+      "loss_physics_residual": 0.022140152752399445,
+      "loss_boundary": 0.08798572421073914,
+      "loss_differential": 0.0005870023160241544,
+      "loss_hjb_pde": 0.21870157122612,
+      "loss_collocation_transport_pde": 0.0005957790417596698,
+      "loss_proxy_calibration": 0.38170313835144043,
+      "loss_proxy_ranking": 0.07450152933597565
+    },
+    {
+      "epoch": 40.0,
+      "loss": 0.7571793794631958,
+      "loss_energy": 0.046585384756326675,
+      "loss_success": 0.8133058547973633,
+      "loss_consistency": 0.5444124341011047,
+      "loss_margin": 0.03822512552142143,
+      "loss_components": 0.11153043806552887,
+      "loss_component_total": 0.09845805913209915,
+      "loss_component_success": 0.6409369111061096,
+      "loss_total_consistency": 0.009435220621526241,
+      "loss_physics_residual": 0.0017233204562216997,
+      "loss_boundary": 0.05718912184238434,
+      "loss_differential": 0.00019536467152647674,
+      "loss_hjb_pde": 0.10712043941020966,
+      "loss_collocation_transport_pde": 0.00019397847063373774,
+      "loss_proxy_calibration": 0.031973451375961304,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 80.0,
+      "loss": 0.6415850520133972,
+      "loss_energy": 0.04155754670500755,
+      "loss_success": 0.706386923789978,
+      "loss_consistency": 0.46875831484794617,
+      "loss_margin": 0.013526761904358864,
+      "loss_components": 0.10121224075555801,
+      "loss_component_total": 0.08943430334329605,
+      "loss_component_success": 0.5674372911453247,
+      "loss_total_consistency": 0.01724778488278389,
+      "loss_physics_residual": 0.0033741712104529142,
+      "loss_boundary": 0.04755011573433876,
+      "loss_differential": 0.00026693506515584886,
+      "loss_hjb_pde": 0.02947581745684147,
+      "loss_collocation_transport_pde": 0.000270271411864087,
+      "loss_proxy_calibration": 0.06170859932899475,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 120.0,
+      "loss": 0.6139699220657349,
+      "loss_energy": 0.04068634286522865,
+      "loss_success": 0.6829242706298828,
+      "loss_consistency": 0.45467817783355713,
+      "loss_margin": 0.012996198609471321,
+      "loss_components": 0.09110692888498306,
+      "loss_component_total": 0.0796266421675682,
+      "loss_component_success": 0.5180376172065735,
+      "loss_total_consistency": 0.010757671669125557,
+      "loss_physics_residual": 0.005067160353064537,
+      "loss_boundary": 0.04121645167469978,
+      "loss_differential": 6.68337379465811e-05,
+      "loss_hjb_pde": 0.03365064784884453,
+      "loss_collocation_transport_pde": 7.150272722356021e-05,
+      "loss_proxy_calibration": 0.05825427174568176,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 160.0,
+      "loss": 0.5941060781478882,
+      "loss_energy": 0.041193317621946335,
+      "loss_success": 0.6645221710205078,
+      "loss_consistency": 0.44420942664146423,
+      "loss_margin": 0.012311662547290325,
+      "loss_components": 0.08502665162086487,
+      "loss_component_total": 0.07360580563545227,
+      "loss_component_success": 0.49132347106933594,
+      "loss_total_consistency": 0.010140744969248772,
+      "loss_physics_residual": 0.0067451163195073605,
+      "loss_boundary": 0.037385378032922745,
+      "loss_differential": 0.0002728663675952703,
+      "loss_hjb_pde": 0.025629431009292603,
+      "loss_collocation_transport_pde": 0.00029432252631522715,
+      "loss_proxy_calibration": 0.058411162346601486,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 200.0,
+      "loss": 0.5791941285133362,
+      "loss_energy": 0.04099206626415253,
+      "loss_success": 0.6485310792922974,
+      "loss_consistency": 0.4345373809337616,
+      "loss_margin": 0.011951625347137451,
+      "loss_components": 0.08176641166210175,
+      "loss_component_total": 0.07016284018754959,
+      "loss_component_success": 0.4759339392185211,
+      "loss_total_consistency": 0.010769769549369812,
+      "loss_physics_residual": 0.0071376315318048,
+      "loss_boundary": 0.03520951047539711,
+      "loss_differential": 0.0007899862830527127,
+      "loss_hjb_pde": 0.021320827305316925,
+      "loss_collocation_transport_pde": 0.0008405226399190724,
+      "loss_proxy_calibration": 0.05834481120109558,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 240.0,
+      "loss": 0.5670174360275269,
+      "loss_energy": 0.04050903022289276,
+      "loss_success": 0.634294331073761,
+      "loss_consistency": 0.42582741379737854,
+      "loss_margin": 0.011782968416810036,
+      "loss_components": 0.07962501794099808,
+      "loss_component_total": 0.06778423488140106,
+      "loss_component_success": 0.4628152847290039,
+      "loss_total_consistency": 0.011122103780508041,
+      "loss_physics_residual": 0.006943270564079285,
+      "loss_boundary": 0.03356625512242317,
+      "loss_differential": 0.0009477892890572548,
+      "loss_hjb_pde": 0.02102959342300892,
+      "loss_collocation_transport_pde": 0.001030930201523006,
+      "loss_proxy_calibration": 0.058597199618816376,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 280.0,
+      "loss": 0.5546413064002991,
+      "loss_energy": 0.039910826832056046,
+      "loss_success": 0.6188111305236816,
+      "loss_consistency": 0.4165181517601013,
+      "loss_margin": 0.011536938138306141,
+      "loss_components": 0.07779469341039658,
+      "loss_component_total": 0.0657658651471138,
+      "loss_component_success": 0.4519646167755127,
+      "loss_total_consistency": 0.011731617152690887,
+      "loss_physics_residual": 0.006723340135067701,
+      "loss_boundary": 0.03227894380688667,
+      "loss_differential": 0.0010260874405503273,
+      "loss_hjb_pde": 0.021288301795721054,
+      "loss_collocation_transport_pde": 0.0011119323316961527,
+      "loss_proxy_calibration": 0.0588175393640995,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 320.0,
+      "loss": 0.5396636128425598,
+      "loss_energy": 0.03884661942720413,
+      "loss_success": 0.6001064777374268,
+      "loss_consistency": 0.40521934628486633,
+      "loss_margin": 0.011041057296097279,
+      "loss_components": 0.07610446214675903,
+      "loss_component_total": 0.06385532766580582,
+      "loss_component_success": 0.44220027327537537,
+      "loss_total_consistency": 0.012098241597414017,
+      "loss_physics_residual": 0.006294658873230219,
+      "loss_boundary": 0.031244948506355286,
+      "loss_differential": 0.0011198361171409488,
+      "loss_hjb_pde": 0.02121368981897831,
+      "loss_collocation_transport_pde": 0.0012278814101591706,
+      "loss_proxy_calibration": 0.05908413231372833,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 360.0,
+      "loss": 0.5205698013305664,
+      "loss_energy": 0.036954592913389206,
+      "loss_success": 0.5755831003189087,
+      "loss_consistency": 0.3904454708099365,
+      "loss_margin": 0.010174094699323177,
+      "loss_components": 0.07430852204561234,
+      "loss_component_total": 0.061816923320293427,
+      "loss_component_success": 0.431404173374176,
+      "loss_total_consistency": 0.01137004978954792,
+      "loss_physics_residual": 0.005873775575309992,
+      "loss_boundary": 0.030248019844293594,
+      "loss_differential": 0.0014457477955147624,
+      "loss_hjb_pde": 0.023511027917265892,
+      "loss_collocation_transport_pde": 0.001578418305143714,
+      "loss_proxy_calibration": 0.05978229641914368,
+      "loss_proxy_ranking": 0.0
+    },
+    {
+      "epoch": 400.0,
+      "loss": 0.5063219666481018,
+      "loss_energy": 0.03650827333331108,
+      "loss_success": 0.5530451536178589,
+      "loss_consistency": 0.3774539828300476,
+      "loss_margin": 0.006962502375245094,
+      "loss_components": 0.07434237748384476,
+      "loss_component_total": 0.06162397563457489,
+      "loss_component_success": 0.41676896810531616,
+      "loss_total_consistency": 0.011079756543040276,
+      "loss_physics_residual": 0.005342873279005289,
+      "loss_boundary": 0.027939971536397934,
+      "loss_differential": 0.0017605249304324389,
+      "loss_hjb_pde": 0.026474639773368835,
+      "loss_collocation_transport_pde": 0.0019692934583872557,
+      "loss_proxy_calibration": 0.07671891897916794,
+      "loss_proxy_ranking": 0.0
+    }
+  ],
+  "candidate_plan": "outputs/proxyq/phygen_main_candidate_plan.jsonl",
+  "target_demo_count": 61,
+  "pool_size": 128,
+  "budget": 5,
+  "include_repaired": false
+}

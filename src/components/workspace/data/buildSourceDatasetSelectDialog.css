@@ -1,0 +1,28 @@
+@import '../training/datasetPickerDialog.css';
+
+.ws-build-source-picker-table {
+  min-width: 760px;
+}
+
+.ws-build-source-picker-col-task {
+  width: 16%;
+  min-width: 100px;
+}
+
+.ws-build-source-picker-col-count {
+  width: 88px;
+  text-align: right;
+}
+
+.ws-build-source-picker-col-size {
+  width: 104px;
+  text-align: right;
+}
+
+.ws-build-source-picker-table thead th.ws-build-source-picker-col-count,
+.ws-build-source-picker-table thead th.ws-build-source-picker-col-size,
+.ws-build-source-picker-table tbody td.ws-build-source-picker-col-count,
+.ws-build-source-picker-table tbody td.ws-build-source-picker-col-size {
+  text-align: right;
+  padding-right: 16px;
+}

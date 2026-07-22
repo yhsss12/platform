@@ -1,0 +1,19 @@
+asset_id: object_threading_fixture_v1
+asset_type: object
+name: 穿杆治具
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: 线缆穿杆任务使用的杆间间隙治具
+tags:
+  - fixture
+  - cable_threading
+  - rigid
+files:
+  mjcf: integrations/CableThreadingMVP/assets/objects/fixture/threading_fixture.xml
+metadata:
+  object_type: fixture
+  deformable_or_rigid: rigid
+  default_pose: [0.4, 0, 0.02]
+  physical_params:
+    gap_width_m: 0.012

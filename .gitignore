@@ -1,0 +1,96 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*.baiduyun.uploading.cfg
+cookies.txt
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+backend/.env
+.env.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# logs
+logs/
+*.log
+MUJOCO_LOG.TXT
+
+# local scratch / Playwright output (do not commit)
+/temp/
+/test-results/
+/e2e-screenshots/
+/.auth/
+
+# pid files
+.pids/
+__pycache__/
+*.py[cod]
+*.class
+.pytest_cache/
+/backend/.pyc_recovery/
+/backend/=*
+
+# large generated/runtime artifacts
+backend/agent_packages/*.tar.gz
+backend/agent_packages/.gitattributes
+backend/agent_packages/generated/
+backend/storage/
+backend/project/
+backend/data/assets/
+agent/wheelhouse/
+scripts/*.zip
+/artifacts/*
+!/artifacts/.gitkeep
+/debug_outputs/
+/eai-data/
+/mimicgen_generated/
+/mnt/data/
+/runs/
+/runtime_outputs/
+/scripts/i18n-verify-output/
+/integrations/CableThreadingMVP/results/
+/integrations/DualArmCableManipulation/model_final.pth
+/scripts/rm_robot/realsense_ws/build/
+/scripts/rm_robot/realsense_ws/install/
+/scripts/rm_robot/realsense_ws/log/
+# 根目录 eai_ide_backup.sql 供 Docker Postgres 首次初始化，需纳入仓库/发布物；按日自动备份仍忽略
+eai_ide_backup_20*.sql
+
+# secrets
+.env
+
+# Isaac Lab 外部依赖（不提交 zip / 解压目录）
+IsaacLab-main.zip
+third_party/IsaacLab/
+third_party/mimicgen/
+
+# 现场部署包：保留目录结构，不提交镜像 tar
+release/on-site-deploy/images/*.tar
+release/on-site-deploy/.env

@@ -1,0 +1,1422 @@
+{
+  "mode": "failed_conditioned_mimicgen_repair",
+  "config": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/data/mg_config.json",
+  "source_hdf5": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/data/source_prepared.hdf5",
+  "success_hdf5": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/data/demo.hdf5",
+  "failed_hdf5": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/data/demo_failed.hdf5",
+  "raw_success": 39,
+  "raw_failed": 61,
+  "raw_total": 100,
+  "raw_success_rate": 0.39,
+  "evaluated_failed_demos": 61,
+  "candidates_per_demo": 12,
+  "candidate_plan": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/outputs/baseline/phygen_main_candidate_plan.jsonl",
+  "num_candidates": 305,
+  "num_candidate_success": 203,
+  "candidate_success_rate": 0.6655737704918033,
+  "repaired_demo_keys": [
+    "demo_1",
+    "demo_2",
+    "demo_3",
+    "demo_4",
+    "demo_6",
+    "demo_7",
+    "demo_8",
+    "demo_9",
+    "demo_10",
+    "demo_11",
+    "demo_12",
+    "demo_13",
+    "demo_14",
+    "demo_15",
+    "demo_16",
+    "demo_17",
+    "demo_18",
+    "demo_19",
+    "demo_21",
+    "demo_22",
+    "demo_23",
+    "demo_25",
+    "demo_26",
+    "demo_27",
+    "demo_28",
+    "demo_30",
+    "demo_31",
+    "demo_32",
+    "demo_33",
+    "demo_34",
+    "demo_36",
+    "demo_37",
+    "demo_38",
+    "demo_39",
+    "demo_41",
+    "demo_42",
+    "demo_43",
+    "demo_44",
+    "demo_46",
+    "demo_47",
+    "demo_48",
+    "demo_49",
+    "demo_50",
+    "demo_51",
+    "demo_52",
+    "demo_53",
+    "demo_54",
+    "demo_55",
+    "demo_56",
+    "demo_57",
+    "demo_58",
+    "demo_59",
+    "demo_60"
+  ],
+  "repaired_count_in_evaluated": 53,
+  "projected_total_success_if_unique_repairs": 92,
+  "projected_total_success_rate_if_unique_repairs": 0.92,
+  "num_problematic": 0,
+  "per_demo": {
+    "demo_46": {
+      "context_energy": 5.322209388956192,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.4620399739033864,
+      "best_success_candidate": 103,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp8_safe"
+      }
+    },
+    "demo_60": {
+      "context_energy": 5.459069453340867,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 0.19240946145057697,
+      "best_success_candidate": 105,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp15_safe"
+      }
+    },
+    "demo_10": {
+      "context_energy": 8.400896471746124,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.31839583555487383,
+      "best_success_candidate": 170,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_30": {
+      "context_energy": 9.098672475213787,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.6359992373813005,
+      "best_success_candidate": 156,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp8_safe"
+      }
+    },
+    "demo_11": {
+      "context_energy": 9.440056292036916,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 1.0280809463604044,
+      "best_success_candidate": 214,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_50": {
+      "context_energy": 9.463293087481333,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.5383911864617117,
+      "best_success_candidate": 118,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp5_safe"
+      }
+    },
+    "demo_21": {
+      "context_energy": 9.917392191538283,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.4212279898828998,
+      "best_success_candidate": 102,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_14": {
+      "context_energy": 10.222227275134772,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 1.0478307811729044,
+      "best_success_candidate": 185,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp5_safe"
+      }
+    },
+    "demo_35": {
+      "context_energy": 10.516633624260724,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 9.768727932133034,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp5_safe"
+      }
+    },
+    "demo_34": {
+      "context_energy": 10.663430688663643,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.784675424139619,
+      "best_success_candidate": 226,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp3_safe"
+      }
+    },
+    "demo_57": {
+      "context_energy": 10.669387652745264,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.3760775421545228,
+      "best_success_candidate": 191,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_23": {
+      "context_energy": 11.069260436452936,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 0.5787953957474965,
+      "best_success_candidate": 221,
+      "best_theta": {
+        "select_src_per_subtask": false,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "random",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 10,
+        "candidate_family": "random_per0_noise0.08_interp15_safe"
+      }
+    },
+    "demo_12": {
+      "context_energy": 11.72584925629737,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.6360144985929468,
+      "best_success_candidate": 195,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp8_safe"
+      }
+    },
+    "demo_45": {
+      "context_energy": 12.188098102208858,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 8.79635007346266,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          5,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp5_safe"
+      }
+    },
+    "demo_13": {
+      "context_energy": 12.71730778267918,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 0.3039610839881896,
+      "best_success_candidate": 163,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": true,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp8_safe"
+      }
+    },
+    "demo_3": {
+      "context_energy": 15.044022710583183,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.6577834493113327,
+      "best_success_candidate": 204,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_36": {
+      "context_energy": 15.269090339172298,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 0.607601912606468,
+      "best_success_candidate": 158,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_28": {
+      "context_energy": 15.63376117280322,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 0.39231523134147883,
+      "best_success_candidate": 180,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          10
+        ],
+        "nn_k": 5,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp10_safe"
+      }
+    },
+    "demo_47": {
+      "context_energy": 15.668435936672509,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 1.2685682051883789,
+      "best_success_candidate": 210,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp8_safe"
+      }
+    },
+    "demo_38": {
+      "context_energy": 15.839137160695604,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.5698183327499006,
+      "best_success_candidate": 136,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp8_safe"
+      }
+    },
+    "demo_56": {
+      "context_energy": 15.874969506510432,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 1.2703958330642564,
+      "best_success_candidate": 220,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_32": {
+      "context_energy": 15.907270138468311,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.6373322818593988,
+      "best_success_candidate": 146,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp5_safe"
+      }
+    },
+    "demo_1": {
+      "context_energy": 15.912728341010398,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 1.0086613601063898,
+      "best_success_candidate": 189,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp8_safe"
+      }
+    },
+    "demo_26": {
+      "context_energy": 15.987752925194687,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 1.7220218743524893,
+      "best_success_candidate": 109,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_24": {
+      "context_energy": 15.99079403619145,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 8.64534240035399,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_37": {
+      "context_energy": 16.110139124639776,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 1.0060662641236169,
+      "best_success_candidate": 200,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 8,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp8_safe"
+      }
+    },
+    "demo_0": {
+      "context_energy": 16.457515490741038,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 10.995751344624365,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_16": {
+      "context_energy": 16.46015217765295,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 1.199209267635018,
+      "best_success_candidate": 123,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_22": {
+      "context_energy": 16.47629987391949,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 1.19765903753879,
+      "best_success_candidate": 205,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_4": {
+      "context_energy": 16.74512732949629,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 0.35726764283127016,
+      "best_success_candidate": 211,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": true,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 10,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp15_safe"
+      }
+    },
+    "demo_52": {
+      "context_energy": 17.407680597813822,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 1.8626874673635205,
+      "best_success_candidate": 226,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_33": {
+      "context_energy": 17.44596828153134,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 0.8305692257283812,
+      "best_success_candidate": 120,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 5,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp15_safe"
+      }
+    },
+    "demo_48": {
+      "context_energy": 17.870125069391104,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.7187965048563446,
+      "best_success_candidate": 120,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_43": {
+      "context_energy": 17.91594914995975,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 1.7207121741931113,
+      "best_success_candidate": 171,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp3_safe"
+      }
+    },
+    "demo_5": {
+      "context_energy": 17.9307949507615,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 12.517844472962663,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_41": {
+      "context_energy": 17.995373027249308,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.45568095625911514,
+      "best_success_candidate": 107,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_31": {
+      "context_energy": 18.170646361066463,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 0.6598405470409566,
+      "best_success_candidate": 111,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp3_safe"
+      }
+    },
+    "demo_6": {
+      "context_energy": 18.21944333723213,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.7869857602314881,
+      "best_success_candidate": 110,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_2": {
+      "context_energy": 18.268047228661693,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 0.877770026305438,
+      "best_success_candidate": 176,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp3_safe"
+      }
+    },
+    "demo_59": {
+      "context_energy": 18.714170764879192,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.32743056854579045,
+      "best_success_candidate": 198,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp3_safe"
+      }
+    },
+    "demo_49": {
+      "context_energy": 18.75554692317202,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.5408102567623821,
+      "best_success_candidate": 160,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_19": {
+      "context_energy": 19.1277205218408,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 0.9937048760839001,
+      "best_success_candidate": 175,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          25
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_20": {
+      "context_energy": 19.224257408630702,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 8.504782051913963,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          0,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp5_safe"
+      }
+    },
+    "demo_40": {
+      "context_energy": 19.331747400224543,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 18.583072399331527,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp5_safe"
+      }
+    },
+    "demo_53": {
+      "context_energy": 19.392405757185436,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.2161774132593362,
+      "best_success_candidate": 208,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp5_safe"
+      }
+    },
+    "demo_39": {
+      "context_energy": 19.472902646614106,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 0.8556063518549533,
+      "best_success_candidate": 190,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_44": {
+      "context_energy": 19.57065925699173,
+      "num_candidates": 5,
+      "num_success": 3,
+      "best_energy": 0.9614363823788298,
+      "best_success_candidate": 219,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.08,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.08_interp5_safe"
+      }
+    },
+    "demo_58": {
+      "context_energy": 20.003481935907146,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 0.7921122485709065,
+      "best_success_candidate": 112,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.05_interp5_safe"
+      }
+    },
+    "demo_55": {
+      "context_energy": 21.04667289918579,
+      "num_candidates": 5,
+      "num_success": 1,
+      "best_energy": 1.7820083744526265,
+      "best_success_candidate": 200,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp5_safe"
+      }
+    },
+    "demo_42": {
+      "context_energy": 21.126119350248125,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.5335458293573634,
+      "best_success_candidate": 225,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp5_safe"
+      }
+    },
+    "demo_7": {
+      "context_energy": 21.934140063048567,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 1.0053208790718977,
+      "best_success_candidate": 164,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp3_safe"
+      }
+    },
+    "demo_29": {
+      "context_energy": 22.017608191836068,
+      "num_candidates": 5,
+      "num_success": 0,
+      "best_energy": 9.411684520682154,
+      "best_success_candidate": null,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp10_safe"
+      }
+    },
+    "demo_25": {
+      "context_energy": 22.672505795674006,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 1.0314605042152731,
+      "best_success_candidate": 209,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          5,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp3_safe"
+      }
+    },
+    "demo_8": {
+      "context_energy": 22.754094165603714,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.5600271789049726,
+      "best_success_candidate": 121,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp5_safe"
+      }
+    },
+    "demo_27": {
+      "context_energy": 23.527954916937343,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.4227906511870094,
+      "best_success_candidate": 159,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 3,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          0,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp3_safe"
+      }
+    },
+    "demo_54": {
+      "context_energy": 26.063366555492898,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.33589718122242596,
+      "best_success_candidate": 220,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.02,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          15
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.02_interp5_safe"
+      }
+    },
+    "demo_17": {
+      "context_energy": 26.11761608381441,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.8022214057047831,
+      "best_success_candidate": 170,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp15_safe"
+      }
+    },
+    "demo_18": {
+      "context_energy": 28.870530621704397,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 1.1103721089309047,
+      "best_success_candidate": 212,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": true,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          5,
+          15
+        ],
+        "nn_k": 5,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp15_safe"
+      }
+    },
+    "demo_51": {
+      "context_energy": 33.36521855790572,
+      "num_candidates": 5,
+      "num_success": 2,
+      "best_energy": 0.8064645440503471,
+      "best_success_candidate": 167,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.0,
+        "num_interpolation_steps": 10,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          10,
+          10
+        ],
+        "nn_k": 3,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.0_interp10_safe"
+      }
+    },
+    "demo_15": {
+      "context_energy": 36.317868648325685,
+      "num_candidates": 5,
+      "num_success": 5,
+      "best_energy": 0.6031305322514812,
+      "best_success_candidate": 217,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          20
+        ],
+        "nn_k": 1,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp15_safe"
+      }
+    },
+    "demo_9": {
+      "context_energy": 54.02942488803308,
+      "num_candidates": 5,
+      "num_success": 4,
+      "best_energy": 0.5249785567496353,
+      "best_success_candidate": 209,
+      "best_theta": {
+        "select_src_per_subtask": true,
+        "transform_first_robot_pose": false,
+        "interpolate_from_last_target_pose": true,
+        "selection_strategy": "nearest_neighbor_object",
+        "action_noise": 0.01,
+        "num_interpolation_steps": 15,
+        "num_fixed_steps": 0,
+        "offset_range": [
+          15,
+          25
+        ],
+        "nn_k": 5,
+        "candidate_family": "nearest_neighbor_object_per1_noise0.01_interp15_safe"
+      }
+    }
+  },
+  "feedback_path": "/home/ubuntu/project/eai-idev2.1/experiments/phygen/runs/proxyq_stack_three_20260718/outputs/baseline_rollout/feedback_candidates.jsonl",
+  "elapsed_sec": 1709.5033140182495
+}

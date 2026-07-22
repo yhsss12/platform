@@ -1,0 +1,6 @@
+outputs/*
+!outputs/.gitkeep
+*.pt
+*.pth
+__pycache__/
+*.pyc

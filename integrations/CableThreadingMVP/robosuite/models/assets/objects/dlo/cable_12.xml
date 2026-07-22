@@ -1,0 +1,95 @@
+<mujoco model="cable_12">
+  <asset>
+    <material name="cable_mat" rgba="0.85 0.2 0.1 1"/>
+  </asset>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <body name="cable_root" pos="0 0 0">
+          <geom
+            name="cable_seg_00"
+            type="capsule"
+            fromto="-0.180 0 0 -0.150 0 0"
+            size="0.007"
+            density="550"
+            friction="1.1 0.02 0.001"
+            material="cable_mat"
+            group="1"
+          />
+          <site name="cable_site_00" pos="-0.180 0 0" size="0.004" rgba="1 0 0 1"/>
+          <site name="cable_site_01" pos="-0.150 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+          <body name="cable_body_01" pos="-0.150 0 0">
+            <joint name="cable_joint_01" type="ball" damping="0.25"/>
+            <geom name="cable_seg_01" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+            <site name="cable_site_02" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+            <body name="cable_body_02" pos="0.030 0 0">
+              <joint name="cable_joint_02" type="ball" damping="0.25"/>
+              <geom name="cable_seg_02" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+              <site name="cable_site_03" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+              <body name="cable_body_03" pos="0.030 0 0">
+                <joint name="cable_joint_03" type="ball" damping="0.25"/>
+                <geom name="cable_seg_03" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                <site name="cable_site_04" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                <body name="cable_body_04" pos="0.030 0 0">
+                  <joint name="cable_joint_04" type="ball" damping="0.25"/>
+                  <geom name="cable_seg_04" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                  <site name="cable_site_05" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                  <body name="cable_body_05" pos="0.030 0 0">
+                    <joint name="cable_joint_05" type="ball" damping="0.25"/>
+                    <geom name="cable_seg_05" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                    <site name="cable_site_06" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                    <body name="cable_body_06" pos="0.030 0 0">
+                      <joint name="cable_joint_06" type="ball" damping="0.25"/>
+                      <geom name="cable_seg_06" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                      <site name="cable_site_07" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                      <body name="cable_body_07" pos="0.030 0 0">
+                        <joint name="cable_joint_07" type="ball" damping="0.25"/>
+                        <geom name="cable_seg_07" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                        <site name="cable_site_08" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                        <body name="cable_body_08" pos="0.030 0 0">
+                          <joint name="cable_joint_08" type="ball" damping="0.25"/>
+                          <geom name="cable_seg_08" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                          <site name="cable_site_09" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                          <body name="cable_body_09" pos="0.030 0 0">
+                            <joint name="cable_joint_09" type="ball" damping="0.25"/>
+                            <geom name="cable_seg_09" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                            <site name="cable_site_10" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                            <body name="cable_body_10" pos="0.030 0 0">
+                              <joint name="cable_joint_10" type="ball" damping="0.25"/>
+                              <geom name="cable_seg_10" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                              <site name="cable_site_11" pos="0.030 0 0" size="0.003" rgba="1 0.35 0.2 1"/>
+
+                              <body name="cable_body_11" pos="0.030 0 0">
+                                <joint name="cable_joint_11" type="ball" damping="0.25"/>
+                                <geom name="cable_seg_11" type="capsule" fromto="0 0 0 0.030 0 0" size="0.007" density="550" friction="1.1 0.02 0.001" material="cable_mat" group="1"/>
+                                <site name="cable_site_12" pos="0.030 0 0" size="0.004" rgba="1 0 0 1"/>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.007" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.007" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.180 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

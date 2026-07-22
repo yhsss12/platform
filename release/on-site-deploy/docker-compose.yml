@@ -1,0 +1,62 @@
+# 客户现场：仅使用已 load 的镜像，不在客户机 build
+# 用法：cp app.env.example .env && 编辑 .env && docker compose up -d
+#
+name: eai-ide
+
+services:
+  redis:
+    image: ${REDIS_IMAGE:-redis:7-alpine}
+    pull_policy: never
+    container_name: eai-redis
+    restart: unless-stopped
+    network_mode: host
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    image: eai-ide:local
+    pull_policy: never
+    container_name: eai-app
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      START_MODE: all
+      FRONTEND_PORT: "3001"
+      INTERNAL_API_URL: http://127.0.0.1:8000
+      REDIS_HOST: "127.0.0.1"
+      REDIS_PORT: "6379"
+      USE_QUEUE: "true"
+      AUTO_START_WORKERS: "false"
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  worker:
+    image: eai-ide:local
+    pull_policy: never
+    container_name: eai-worker
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      START_MODE: worker
+      REDIS_HOST: "127.0.0.1"
+      REDIS_PORT: "6379"
+      USE_QUEUE: "true"
+    depends_on:
+      redis:
+        condition: service_healthy
+      app:
+        condition: service_started
+
+volumes:
+  redis-data:

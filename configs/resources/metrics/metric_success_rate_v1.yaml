@@ -1,0 +1,42 @@
+asset_id: metric_success_rate_v1
+asset_type: metric
+name: 成功率
+version: v1.0.0
+status: available
+description: 评测任务中成功 episode 数占实际完成 episode 数的比例，是所有评测任务的基础指标。
+tags:
+  - success_rate
+  - core
+metadata:
+  displayName: 成功率
+  implemented: true
+  calculationMode: aggregate_field
+  sourceField: successRate
+  valueType: ratio
+  unit: "%"
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/aggregate_result.json
+    - results/eval.results.json
+    - results/per_episode_results.json
+  output_fields:
+    - successRate
+    - success_rate
+    - successfulEpisodes
+    - completedEpisodes
+  fallbackFormula: successfulEpisodes / completedEpisodes
+  defaultSelected: true
+  thresholds:
+    warn: 0.5
+    pass: 0.8

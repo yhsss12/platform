@@ -1,0 +1,16 @@
+asset_id: robot_ur5e_mujoco_v1
+asset_type: robot
+name: UR5e (MuJoCo)
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: Robosuite UR5e 单臂机器人，用于线缆穿杆 MuJoCo 任务
+tags:
+  - cable_threading
+  - mujoco
+  - ur5e
+  - single_arm
+metadata:
+  robosuite_robot: UR5e
+  control_mode: joint_position
+  default_control_frequency: 20

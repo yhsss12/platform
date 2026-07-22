@@ -1,0 +1,70 @@
+asset_id: task_isaaclab_franka_stack_cube_v1
+asset_type: task
+task_type: isaaclab_franka_stack_cube
+name: Isaac Lab Franka Stack Cube
+display_name: Franka Stack Cube
+version: v1.0.0
+status: registered
+enabled: true
+sim_backend: isaac_lab
+simulator: isaac_sim
+description: Isaac Lab Franka Stack Cube 任务模板（Isaac Lab Mimic + seed demonstration 数据生成链路）
+source: Isaac Lab / Isaac Lab Mimic
+tags:
+  - isaac_lab
+  - isaac_sim
+  - franka
+  - stacking
+  - stack_cube
+  - mimic
+required_assets:
+  robots:
+    - robot_franka_panda_v1
+metrics:
+  - isaac_stack_success_rate_v1
+  - isaac_stack_mean_reward_v1
+  - isaac_stack_mean_episode_length_v1
+  - isaac_stack_failure_count_v1
+  - isaac_stack_timeout_rate_v1
+task_package_path: integrations/IsaacLabBlockStacking
+scene_path: scene/
+expert_policy_path: expert_policy/
+run_entry: integrations/IsaacLabBlockStacking/run/platform_run.py
+generate_entry: integrations/IsaacLabBlockStacking/run/platform_run.py --mode generate_mimic
+check_entry: integrations/IsaacLabBlockStacking/run/platform_run.py --mode check
+data_formats:
+  - HDF5
+  - Zarr
+requires_seed_demo: true
+requires_external_runtime: true
+external_runtime: 运行依赖 Isaac Sim / PhysX
+runner:
+  generate_entry: integrations/IsaacLabBlockStacking/run/platform_run.py
+  check_entry: integrations/IsaacLabBlockStacking/run/platform_run.py
+  backend_adapter: isaaclab_franka_stack_cube_service
+default_config:
+  isaac_lab_task_id: Isaac-Stack-Cube-Franka-IK-Rel-Mimic-v0
+  generation_mode: mimic_auto
+  seeds: [0]
+  episode_count: 1
+  max_episodes: 3
+  headless: true
+  save_video: true
+  save_trajectory: true
+  output_schema: isaaclab_franka_stack_cube_v1
+metadata:
+  observation_schema: policy + states (HDF5)
+  action_schema: arm IK relative commands + gripper
+  success_condition: stack_success_term
+  expert_source: Isaac Lab Mimic seed demonstration
+  evaluation_status: requires_adapter
+  availableMetricIds:
+    - isaac_stack_success_rate_v1
+    - isaac_stack_mean_reward_v1
+    - isaac_stack_mean_episode_length_v1
+    - isaac_stack_failure_count_v1
+    - isaac_stack_timeout_rate_v1
+  defaultMetricIds:
+    - isaac_stack_success_rate_v1
+    - isaac_stack_mean_reward_v1
+    - isaac_stack_failure_count_v1

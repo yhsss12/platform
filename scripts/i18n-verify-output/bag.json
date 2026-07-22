@@ -1,0 +1,92 @@
+[
+  {
+    "check": "refresh-persist",
+    "locale": "zh-CN",
+    "pass": true,
+    "note": "epi_locale=zh-CN"
+  },
+  {
+    "check": "convert-detail-drawer",
+    "locale": "zh-CN",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-create-preview",
+    "locale": "zh-CN",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "admin-users-role",
+    "locale": "zh-CN",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-jobs-page",
+    "locale": "zh-CN",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "refresh-persist",
+    "locale": "en",
+    "pass": true,
+    "note": "epi_locale=en"
+  },
+  {
+    "check": "convert-detail-drawer",
+    "locale": "en",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-create-preview",
+    "locale": "en",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "admin-users-role",
+    "locale": "en",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-jobs-page",
+    "locale": "en",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "refresh-persist",
+    "locale": "sv",
+    "pass": true,
+    "note": "epi_locale=sv"
+  },
+  {
+    "check": "convert-detail-drawer",
+    "locale": "sv",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-create-preview",
+    "locale": "sv",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "admin-users-role",
+    "locale": "sv",
+    "pass": true,
+    "note": "OK"
+  },
+  {
+    "check": "collect-jobs-page",
+    "locale": "sv",
+    "pass": true,
+    "note": "OK"
+  }
+]

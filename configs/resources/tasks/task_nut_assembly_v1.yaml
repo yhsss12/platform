@@ -1,0 +1,61 @@
+asset_id: task_nut_assembly_v1
+asset_type: task
+task_type: nut_assembly
+name: 螺母装配
+version: v0.1.0-p0
+status: available
+sim_backend: mujoco
+description: MimicGen / robosuite 螺母装配任务（P0 模板注册、环境验证与 HDF5 导入探测）
+tags:
+  - nut_assembly
+  - mujoco
+  - mimicgen
+  - robosuite
+  - data_import
+required_assets:
+  robots:
+    - robot_panda_mujoco_v1
+  end_effectors:
+    - end_effector_parallel_gripper_v1
+metrics:
+  - metric_success_rate_v1
+  - metric_runtime_mean_steps_v1
+  - metric_runtime_max_steps_v1
+runner:
+  env_check_entry: integrations/NutAssemblyMimicGen/scripts/platform_env_check.py
+  hdf5_inspect_entry: integrations/NutAssemblyMimicGen/scripts/hdf5_import_check.py
+  generate_entry: integrations/NutAssemblyMimicGen/run.py
+  backend_adapter: nut_assembly_service
+default_config:
+  default_robot: Panda
+  robot: Panda
+  env_names:
+    - NutAssemblySquare
+    - NutAssembly
+  mimicgen_env_names:
+    - Square_D0
+    - NutAssembly_D0
+  output_schema: mimicgen_robomimic_hdf5_v1
+metadata:
+  source: mimicgen_robosuite
+  english_name: Nut Assembly
+  category: precision_assembly
+  robot_type: single_arm_gripper
+  supported_stages:
+    - data_import
+    - dataset_build
+    - training
+    - evaluation
+    - replay
+    - report
+  integration_phase: p0
+  availableMetricIds:
+    - metric_success_rate_v1
+    - metric_runtime_mean_steps_v1
+    - metric_runtime_max_steps_v1
+  defaultMetricIds:
+    - metric_success_rate_v1
+  failure_types:
+    - timeout
+    - grasp_fail
+    - insert_fail

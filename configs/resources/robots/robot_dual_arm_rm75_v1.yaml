@@ -1,0 +1,20 @@
+asset_id: robot_dual_arm_rm75_v1
+asset_type: robot
+name: 双臂机器人 RM75
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: 用于双臂线缆操作与穿杆任务的双臂机器人资源
+tags:
+  - dual_arm
+  - mujoco
+  - industrial
+files:
+  mjcf: integrations/DualArmCableManipulation/assets/robots/rm75/robot.xml
+  urdf: integrations/DualArmCableManipulation/assets/robots/rm75/robot.urdf
+metadata:
+  joint_names: []
+  control_mode: joint_position
+  end_effectors:
+    - end_effector_parallel_gripper_v1
+  default_control_frequency: 50

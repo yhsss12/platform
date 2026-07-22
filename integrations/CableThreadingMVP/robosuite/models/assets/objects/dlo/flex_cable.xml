@@ -1,0 +1,60 @@
+<mujoco model="flex_cable">
+  <!--
+    Flexcomp-based cable model for MuJoCo 3.x.
+
+    改进要点（消除抓取时的直线段）：
+    1. 添加 <edge>：stiffness=0 允许节点自由变形，damping 抑制振荡
+    2. 添加 <elasticity>：控制材料弹性行为
+    3. 添加 <contact>：启用碰撞和摩擦
+    4. 降低 bend/twist 刚度：允许自然弯曲
+    5. 减小 timestep + 提高求解器精度：改善稳定性
+
+    几何：51 个顶点，0.5m 总长，capsule 半径 0.004m
+    顶点：51 个（每段端点一个），通过 data.flexvert_xpos 读取
+  -->
+
+  <extension>
+    <plugin plugin="mujoco.elasticity.cable"/>
+  </extension>
+
+  <option timestep="0.005" solver="Newton" tolerance="1e-6"/>
+
+  <default>
+    <geom condim="6" friction="2.8 0.03 0.001" solref="0.006 1"
+          solimp="0.96 0.992 0.0005" margin="0.0015"/>
+  </default>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <flexcomp
+          name="flex_cable"
+          type="grid"
+          count="51 1 1"
+          spacing="0.01 0.01 0.01"
+          radius="0.004"
+          dim="1"
+          rgba="0.8 0.2 0.2 1"
+        >
+          <!-- 边约束：stiffness=0 允许自由变形，damping 抑制振荡 -->
+          <edge equality="true" stiffness="0" damping="0.03"
+                 solref="0.006 1" solimp="0.97 0.995 0.0005"/>
+
+          <!-- 材料弹性：控制线缆的弹性行为 -->
+          <elasticity young="3.5e4" poisson="0.3" damping="0.05"
+                      thickness="0.001"/>
+
+          <!-- 弯曲/扭转刚度：降低以允许自然弯曲 -->
+          <plugin plugin="mujoco.elasticity.cable">
+            <config key="twist" value="3e2"/>
+            <config key="bend" value="1.2e3"/>
+            <config key="vmax" value="0"/>
+          </plugin>
+        </flexcomp>
+      </body>
+      <site name="bottom_site" pos="0 0 -0.008" size="0.005" rgba="0 0 0 0"/>
+      <site name="top_site" pos="0 0 0.008" size="0.005" rgba="0 0 0 0"/>
+      <site name="horizontal_radius_site" pos="0.15 0 0" size="0.005" rgba="0 0 0 0"/>
+    </body>
+  </worldbody>
+</mujoco>

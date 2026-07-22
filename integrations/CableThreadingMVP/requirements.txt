@@ -1,0 +1,21 @@
+# CableThreadingMVP 依赖
+# 核心依赖（必需）
+numpy>=1.24.0
+mujoco>=3.0.0
+h5py>=3.8.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.0
+
+# 可选依赖（用于 LeRobot 格式）
+pyarrow>=12.0.0
+
+# 可选依赖（用于学习策略评估）
+robomimic>=0.3.0
+torch>=2.0.0
+
+# BC / robomimic 训练运行时依赖（须安装到 conda env site-packages；
+# 训练子进程使用 PYTHONNOUSERSITE=1，不会读取用户目录 ~/.local）
+psutil>=5.9.0
+tqdm>=4.65.0
+sympy>=1.12
+matplotlib>=3.7.0

@@ -1,0 +1,36 @@
+asset_id: metric_runtime_mean_runtime_sec_v1
+asset_type: metric
+name: 平均耗时
+version: v1.0.0
+status: deprecated
+description: 已废弃，请使用 metric_runtime_mean_sim_time_sec_v1（平均仿真时长）。
+tags:
+  - runtime_metrics
+  - evaluation
+  - deprecated
+metadata:
+  displayName: 平均仿真时长
+  implemented: true
+  selectable: false
+  aliasOf: metric_runtime_mean_sim_time_sec_v1
+  calculationMode: aggregate_field
+  sourceField: runMetrics.meanSimTimeSec
+  valueType: number
+  unit: "s"
+  description: 兼容旧 ID；语义同「平均仿真时长」，按 stepCount / controlFrequencyHz 计算。
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/step_metrics/episode_*/summary.json
+    - results/aggregate_result.json
+  defaultSelected: false

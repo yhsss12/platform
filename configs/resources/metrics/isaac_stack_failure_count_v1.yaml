@@ -1,0 +1,21 @@
+asset_id: isaac_stack_failure_count_v1
+asset_type: metric
+name: 失败次数
+version: v1.0.0
+status: available
+sim_backend: isaac_lab
+description: 评测中未达成任务成功条件的 episode 数量。
+tags:
+  - failure_count
+  - isaac_block_stacking
+metadata:
+  displayName: 失败次数
+  implemented: true
+  calculationMode: aggregate_field
+  sourceField: failureCount
+  valueType: integer
+  unit: episodes
+  applicableTaskTypes:
+    - isaac_block_stacking
+  applicableEvaluationModes:
+    - trained_model_evaluation

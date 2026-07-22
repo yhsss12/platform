@@ -1,0 +1,30 @@
+asset_id: metric_runtime_control_frequency_v1
+asset_type: metric
+name: 控制频率
+version: v1.0.0
+status: available
+description: 策略控制循环频率，通常为 1/control_dt；不等同于视频帧率。
+metadata:
+  displayName: 控制频率
+  implemented: true
+  selectable: true
+  calculationMode: aggregate_field
+  sourceField: runMetrics.controlFrequencyHz
+  valueType: number
+  unit: "Hz"
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/step_metrics/episode_*/summary.json
+    - results/aggregate_result.json
+  defaultSelected: false

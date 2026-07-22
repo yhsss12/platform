@@ -1,0 +1,11 @@
+experiment_method:
+  name: proposed
+  method_code: P
+  description: Complete proposed method with decoupling, dual-path preview, and explicit recovery.
+  decoupling: true
+  dual_path_preview: true
+  recovery: true
+  preview_route: split
+  relay_mode: minimal
+  preview_mode_lock: auto
+  browser_recovery_enabled: true

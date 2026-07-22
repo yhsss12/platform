@@ -1,0 +1,52 @@
+{
+  "schema": "nut_assembly_pinn_model_registry_v1",
+  "updated_at": "2026-07-06T02:02:07.371463+00:00",
+  "default_baseline": "aligned-original",
+  "physics_residual_repair_opt_in": true,
+  "models": {
+    "aligned-original": {
+      "model_id": "aligned-original",
+      "display_name": "V1-F aligned-original",
+      "role": "default_baseline",
+      "opt_in": false,
+      "replace_default": false,
+      "checkpoint": "outputs/v1f_aligned_repair_parameter_model/original_failed/trained_model/model_v1f_aligned_original.pt",
+      "status": "production_default",
+      "description": "Nut assembly PINN repair 默认基线；physics residual repair 与 experimental 分支均不得覆盖此 checkpoint。"
+    },
+    "v1g-stage1-lite-p1p2": {
+      "model_id": "v1g-stage1-lite-p1p2",
+      "display_name": "V1-G-stage1-lite-p1p2",
+      "role": "experimental_candidate",
+      "opt_in": true,
+      "replace_default": false,
+      "checkpoint": "outputs/v1g_stage1_lite_p1p2/trained_model/model_v1g_stage1_lite_p1p2.pt",
+      "metadata_path": "outputs/v1g_stage1_lite_p1p2/model_asset_metadata.json",
+      "model_card": "outputs/v1g_stage1_lite_p1p2/model_card_v1g_stage1_lite_p1p2.md",
+      "comparison_summary": "outputs/v1g_stage1_lite_p1p2/aligned_original_vs_v1g_lite_summary.md",
+      "init_from": "aligned-original",
+      "physics_loss": [
+        "E_transport",
+        "E_xy",
+        "E_lift_soft"
+      ],
+      "lambda_transport": 0.02,
+      "lambda_xy": 0.02,
+      "lambda_lift": 0.01,
+      "lambda_retention": 0.35,
+      "excluded_demo": "demo_3",
+      "status": "passed_candidate_criteria",
+      "description": "基于 aligned-original 轻量 fine-tune；experimental / opt-in candidate，不替换默认基线。"
+    },
+    "v1g-stage1-p1xy": {
+      "model_id": "v1g-stage1-p1xy",
+      "display_name": "V1-G-stage1-p1xy",
+      "role": "experimental",
+      "opt_in": true,
+      "replace_default": false,
+      "checkpoint": "outputs/v1g_stage1_p1xy/trained_model/model_v1g_stage1_p1xy.pt",
+      "status": "deprecated_candidate",
+      "description": "早期 V1-G 实验分支；demo_4 曾出现 regression，已被 v1g-stage1-lite-p1p2 取代为 candidate。"
+    }
+  }
+}

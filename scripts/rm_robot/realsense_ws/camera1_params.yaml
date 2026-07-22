@@ -1,0 +1,14 @@
+/camera1:
+  ros__parameters:
+    serial_no: "419522071631"
+    use_intra_process_comms: false
+    camera_name: camera1
+    enable_color: true
+    enable_depth: true
+    enable_infra: true
+    enable_infra1: true
+    enable_infra2: true
+    rgb_camera.color_profile: "640x480x30"
+    depth_module.depth_profile: "640x480x30"
+    pointcloud.enable: true
+    publish_tf: true

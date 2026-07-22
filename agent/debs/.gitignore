@@ -1,0 +1,2 @@
+# 本地打进来的 Ubuntu/Debian .deb（不提交仓库）；打包时会打进 tar
+*.deb

@@ -1,0 +1,20 @@
+# pi0 LeRobot joint-space smoke config — uses platform-native LeRobot v3 dataset (no HDF5 converter).
+
+enabled: true
+dataset_format: lerobot
+dataset_path: runs/cable_threading/jobs/ct_gen_20260630_120927_1153/datasets/lerobot_dataset
+robot: Panda
+state_dim: 9
+action_dim: 8
+image_keys:
+  - agentview_image
+  - robot0_eye_in_hand_image
+action_key: action
+task_instruction: "thread the cable through the pole"
+controller_type: JOINT_POSITION
+action_mode: joint_delta_derived
+action_representation: normalized_joint_delta
+epochs: 1
+batch_size: 2
+max_steps: 10
+device: cpu

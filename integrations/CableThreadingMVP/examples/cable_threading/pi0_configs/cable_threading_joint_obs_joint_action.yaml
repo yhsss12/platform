@@ -1,0 +1,29 @@
+# pi0 joint-space schema template — NOT ENABLED for training/eval yet.
+# TODO: wire HDF5→LeRobot conversion, openpi processor, action_dim=8 head, eval adapter.
+
+enabled: false
+not_enabled: true
+status: not_enabled
+reason: "pi0 joint-space 尚未接入：平台 HDF5→LeRobot 转换与 openpi 训练链路未完成"
+
+preferred_policy_schema_id: joint_state_obs_joint_action
+
+image_keys:
+  - agentview_image
+  - robot0_eye_in_hand_image
+low_dim_keys:
+  - robot0_joint_pos
+  - robot0_gripper_qpos
+low_dim_dim: 9
+
+action_key: actions
+action_dim: 8
+action_mode: joint_delta_derived
+controller_type: JOINT_POSITION
+eval_executor: joint_position
+trained_action_mode: joint_delta_derived
+
+language_instruction: "thread the cable through the ring"
+language_conditioning: true
+
+dataset: runs/cable_threading/jobs/ct_gen_20260624_joint_space_replay_full/datasets/dataset.hdf5

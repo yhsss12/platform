@@ -1,0 +1,16 @@
+{
+  "task_id": "isaacsim_franka_pick_place",
+  "task_name": "Franka 物体搬运",
+  "simulator": "Isaac Sim",
+  "expert_source": "NVIDIA Isaac Sim FrankaPickPlace official controller",
+  "ai_generated": false,
+  "episodes": [
+    {
+      "episode_id": "ep_000001",
+      "status": "schema_ready",
+      "metrics_file": "demo_data/metrics/ep_000001_metrics.json",
+      "video_file": null,
+      "note": "真实视频需在本机 Isaac Sim 运行官方 controller 后生成。"
+    }
+  ]
+}

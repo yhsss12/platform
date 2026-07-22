@@ -1,0 +1,8 @@
+{
+  "task_id": "isaacsim_franka_pick_place",
+  "expert_source": "NVIDIA Isaac Sim FrankaPickPlace official controller",
+  "ai_generated": false,
+  "num_episodes": 0,
+  "success_rate": null,
+  "status": "official_expert_adapter_ready; run Isaac Sim locally to populate metrics"
+}

@@ -1,0 +1,33 @@
+asset_id: metric_runtime_mean_steps_v1
+asset_type: metric
+name: 平均步数
+version: v1.0.0
+status: available
+description: 通用运行指标 - 平均步数
+tags:
+  - runtime_metrics
+  - evaluation
+metadata:
+  displayName: 平均步数
+  implemented: true
+  selectable: true
+  calculationMode: aggregate_field
+  sourceField: runMetrics.meanSteps
+  valueType: number
+  unit: "steps"
+  applicableTaskTypes:
+    - cable_threading
+    - cable_threading_single_arm
+    - dual_arm_cable_manipulation
+    - block_stacking
+    - isaac_block_stacking
+    - isaaclab_franka_stack_cube
+  applicableEvaluationModes:
+    - expert_policy_evaluation
+    - trained_model_evaluation
+    - episode_stability
+    - policy_evaluation
+  input_files:
+    - results/step_metrics/episode_*/summary.json
+    - results/aggregate_result.json
+  defaultSelected: false

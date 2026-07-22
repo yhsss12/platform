@@ -1,0 +1,118 @@
+# EAI IDE：PostgreSQL + MinIO + Redis + app + worker，全部使用宿主机网络（Linux：network_mode: host）
+#
+# 一键启动（项目根目录、已配置 .env）：
+#   docker compose up -d --build
+#
+# 配置以根目录 .env 为主：本文件仅编排服务顺序、健康检查与少量固定项（如 INTERNAL_API_URL）。
+# Compose 会从项目根目录 .env 读取变量，用于 ${...} 替换及服务 env_file。
+# 若拉取 docker.io 超时：在 .env 将 POSTGRES_BASE_IMAGE 等改为镜像加速完整路径。
+# 本地已有与 Hub 同名的镜像（如 postgres:16）时：.env 保持短名，且 compose 中 build.pull=false，避免构建前联网校验。
+# 浏览器直传 MinIO：请在 .env 配置 MINIO_PUBLIC_ENDPOINT（浏览器可达的 host:9000），与 MINIO_ENDPOINT（服务端常用 127.0.0.1）区分。
+#
+# host 网络下（端口占用在宿主机上，勿与已有服务冲突）：
+#   - PostgreSQL：${POSTGRES_PORT:-5432}
+#   - MinIO S3 API：${MINIO_API_PORT:-9000}，控制台：${MINIO_CONSOLE_PORT:-9001}
+#   - Redis：6379
+#   - API：8000，Next 生产：3001（FRONTEND_PORT）
+#
+# 应用连接数据库与对象存储请使用 .env 中的 DATABASE_URL、MINIO_*（建议主机 127.0.0.1，与 compose 内置服务一致）。
+# 浏览器/局域网访问前端与 API 时，NEXT_PUBLIC_API_URL / PUBLIC_BASE_URL 仍可为宿主机局域网 IP。
+#
+# PostgreSQL 与 MinIO 已拆到独立文件：docker-compose.postgres-minio.yml
+#   docker compose -f docker-compose.postgres-minio.yml up -d --build
+# 开发时也可在宿主机自行启动 5432/9000，与 .env 中 DATABASE_URL、MINIO_* 一致；app/worker 不依赖 compose 内 PG/MinIO。
+#
+# 仅 Linux 支持 host 网络；Mac/Windows Docker Desktop 不适用。
+#
+name: eai-ide
+
+services:
+  redis:
+    image: ${REDIS_IMAGE:-redis:7-alpine}
+    pull_policy: if_not_present
+    container_name: eai-redis
+    restart: unless-stopped
+    network_mode: host
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.1"
+          memory: 128M
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.eai-ide
+      pull: false
+      args:
+        UBUNTU_BASE_IMAGE: ${UBUNTU_BASE_IMAGE:-ubuntu:22.04}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://127.0.0.1:8000}
+        PYARMOR_ENABLED: ${PYARMOR_ENABLED:-true}
+        PYARMOR_SKIP_FILES: ${PYARMOR_SKIP_FILES:-mcap_converter.py,flexible_mcap_to_hdf5.py,routes_data_assets.py}
+        PYARMOR_MAX_LINES: ${PYARMOR_MAX_LINES:-2000}
+        PYARMOR_OBF_CODE: ${PYARMOR_OBF_CODE:-1}
+        CYTHON_ENABLED: ${CYTHON_ENABLED:-true}
+    image: eai-ide:local
+    container_name: eai-app
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      START_MODE: all
+      INTERNAL_API_URL: http://127.0.0.1:8000
+      REDIS_HOST: "127.0.0.1"
+      REDIS_PORT: "6379"
+      USE_QUEUE: "true"
+      AUTO_START_WORKERS: "false"
+    depends_on:
+      redis:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "4.0"
+          memory: 8G
+        reservations:
+          cpus: "0.5"
+          memory: 1G
+
+  worker:
+    image: eai-ide:local
+    container_name: eai-worker
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      START_MODE: worker
+      REDIS_HOST: "127.0.0.1"
+      REDIS_PORT: "6379"
+      USE_QUEUE: "true"
+    depends_on:
+      redis:
+        condition: service_healthy
+      app:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          cpus: "8.0"
+          memory: 16G
+        reservations:
+          cpus: "0.75"
+          memory: 2G
+
+volumes:
+  redis-data:

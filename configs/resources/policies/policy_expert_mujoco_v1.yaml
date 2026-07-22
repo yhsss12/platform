@@ -1,0 +1,18 @@
+asset_id: policy_expert_mujoco_v1
+asset_type: policy
+name: MuJoCo 专家策略
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: CableThreading scripted/expert 策略占位
+tags:
+  - expert
+  - scripted
+files:
+  entry: integrations/CableThreadingMVP/run.py
+metadata:
+  policy_type: scripted
+  checkpoint_path: ""
+  inference_entry: run.py expert
+  observation_adapter: cable_threading_default
+  action_adapter: joint_position

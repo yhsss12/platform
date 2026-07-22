@@ -1,0 +1,18 @@
+asset_id: policy_robomimic_bc_v1
+asset_type: policy
+name: Robomimic BC 策略
+version: v1.0.0
+status: experimental
+sim_backend: mujoco
+description: 基于 Robomimic BC 训练 checkpoint 的策略占位
+tags:
+  - robomimic
+  - bc
+files:
+  entry: integrations/CableThreadingMVP/examples/cable_threading/train_bc.py
+metadata:
+  policy_type: robomimic_bc
+  checkpoint_path: runs/training/jobs/*/checkpoints/model_final.pth
+  inference_entry: run.py eval --policy robomimic
+  observation_adapter: robomimic_hdf5
+  action_adapter: robomimic_action

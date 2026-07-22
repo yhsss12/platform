@@ -1,0 +1,30 @@
+stages:
+  - build
+
+build-job:
+  stage: build
+
+  script:
+    - git clone git@172.31.1.100:tool/eai-idev2.1.git -b dev
+    - echo "当前代码已经在 runner 工作目录"
+
+    # 打包
+    - tar -cvf eai-idev2.1.tar .
+
+    # 创建 ssh known_hosts
+    - mkdir -p ~/.ssh
+
+    # 信任目标机器
+    - ssh-keyscan -H 192.168.200.12 >> ~/.ssh/known_hosts
+
+    # 上传
+    - scp eai-idev2.1.tar root@192.168.200.12:/root
+
+     # 远程执行解压，build镜像
+    - ssh -o StrictHostKeyChecking=no root@192.168.200.12 "
+        mkdir -p /data/eai-idev2.1 &&
+        tar -xvf /root/eai-idev2.1.tar -C /data/eai-idev2.1 &&
+        sed -i 's/172.18.0.114/192.168.200.12/g' /data/eai-idev2.1/.env &&
+        docker compose -f /data/eai-idev2.1/docker-compose.postgres-minio.yml up -d --build &&
+        docker compose -f /data/eai-idev2.1/docker-compose.yml up -d --build
+      "

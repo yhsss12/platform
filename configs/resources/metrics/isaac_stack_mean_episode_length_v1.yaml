@@ -1,0 +1,21 @@
+asset_id: isaac_stack_mean_episode_length_v1
+asset_type: metric
+name: 平均步长
+version: v1.0.0
+status: available
+sim_backend: isaac_lab
+description: 模型完成或终止一个 episode 的平均仿真步数。
+tags:
+  - episode_length
+  - isaac_block_stacking
+metadata:
+  displayName: 平均步长
+  implemented: true
+  calculationMode: aggregate_field
+  sourceField: meanEpisodeLength
+  valueType: number
+  unit: steps
+  applicableTaskTypes:
+    - isaac_block_stacking
+  applicableEvaluationModes:
+    - trained_model_evaluation

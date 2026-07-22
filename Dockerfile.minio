@@ -1,0 +1,12 @@
+# 国内网络：.env 中 MINIO_BASE_IMAGE，或 --build-arg MINIO_BASE_IMAGE=docker.m.daocloud.io/minio/minio:latest
+ARG MINIO_BASE_IMAGE=minio/minio:latest
+FROM ${MINIO_BASE_IMAGE}
+
+# 删掉 NODE_IP 变量，或者改为 0.0.0.0
+ENV MINIO_PORT=9000
+ENV CONSOLE_PORT=9001
+ENV MINIO_ROOT_USER=admin
+ENV MINIO_ROOT_PASSWORD=Admin@123
+
+# 修改启动命令：将具体的 IP 换成冒号（代表监听所有网卡）
+ENTRYPOINT ["sh", "-c", "minio server /data --address :${MINIO_PORT} --console-address :${CONSOLE_PORT}"]

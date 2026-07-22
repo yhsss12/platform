@@ -1,0 +1,30 @@
+asset_id: metric_episode_stability_v1
+asset_type: metric
+name: Episode 稳定性
+version: v1.0.0
+status: available
+sim_backend: mujoco
+description: dual_arm episode 稳定性评测聚合指标。
+tags:
+  - episode_stability
+  - dual_arm
+metadata:
+  displayName: Episode 稳定性
+  implemented: true
+  calculationMode: aggregate_fields
+  sourceFields:
+    - summary.successRate
+    - taskMetrics.meanFinalSag
+    - taskMetrics.meanFinalSpan
+  valueType: composite
+  unit: ""
+  applicableTaskTypes:
+    - dual_arm_cable_manipulation
+  applicableEvaluationModes:
+    - episode_stability
+  input_files:
+    - results/aggregate_result.json
+    - results/per_episode_results.json
+  thresholds:
+    warn: 0.6
+    pass: 0.85

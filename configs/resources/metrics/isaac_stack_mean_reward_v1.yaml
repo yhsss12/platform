@@ -1,0 +1,21 @@
+asset_id: isaac_stack_mean_reward_v1
+asset_type: metric
+name: 平均奖励
+version: v1.0.0
+status: available
+sim_backend: isaac_lab
+description: 评测 rollout 中各 episode 奖励的平均值。
+tags:
+  - mean_reward
+  - isaac_block_stacking
+metadata:
+  displayName: 平均奖励
+  implemented: true
+  calculationMode: aggregate_field
+  sourceField: meanReward
+  valueType: number
+  unit: ""
+  applicableTaskTypes:
+    - isaac_block_stacking
+  applicableEvaluationModes:
+    - trained_model_evaluation
