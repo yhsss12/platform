@@ -1,0 +1,6 @@
+# Keep the directory skeleton in Git, but never commit generated data.
+*
+!*/
+!.gitignore
+!.gitkeep
+!README.md
